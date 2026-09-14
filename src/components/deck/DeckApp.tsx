@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Expand, Grid2X2, List, Menu, Minimize, Presentation } from "lucide-react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { ChevronLeft, ChevronRight, Grid2X2, List, Menu, Minimize, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -107,11 +107,11 @@ export function DeckApp({ initialSlide = 0, print = false }: { initialSlide?: nu
             <TopButton label="Next slide" disabled={index === slides.length - 1} onClick={() => go(index + 1)} icon={<ChevronRight />} />
           </div>
         </header>
-        <div ref={stageRef} className="deck-stage"><div className="slide-wrapper" style={{ "--scale": scale } as React.CSSProperties}><SlideRenderer key={current.id} slide={current} number={index + 1} total={slides.length} /></div></div>
+        <div ref={stageRef} className="deck-stage"><div className="slide-wrapper" style={{ "--scale": scale } as CSSProperties}><SlideRenderer key={current.id} slide={current} number={index + 1} total={slides.length} /></div></div>
         {overview && <div className="fixed inset-0 z-40 overflow-y-auto bg-ink/95 p-6 pt-24"><div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{slides.map((slide,i) => <button key={slide.id} type="button" onClick={() => go(i)} className={`group text-left ${i === index ? "ring-4 ring-ochre" : ""}`}><div className="aspect-video overflow-hidden bg-paper p-4 text-ink"><span className="font-mono text-xs text-oxy">{String(i+1).padStart(2,"0")} · M{slide.module}</span><strong className="mt-3 block font-slab text-xl leading-tight">{slide.title}</strong></div></button>)}</div><Button size="icon" variant="secondary" aria-label="Close overview" className="fixed right-6 top-20" onClick={() => setOverview(false)}><List /></Button></div>}
       </div>
     </TooltipProvider>
   );
 }
 
-function TopButton({ label, onClick, icon, disabled }: { label: string; onClick: () => void; icon: React.ReactNode; disabled?: boolean }) { return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" aria-label={label} onClick={onClick} disabled={disabled}>{icon}</Button></TooltipTrigger><TooltipContent>{label}</TooltipContent></Tooltip>; }
+function TopButton({ label, onClick, icon, disabled }: { label: string; onClick: () => void; icon: ReactNode; disabled?: boolean }) { return <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" aria-label={label} onClick={onClick} disabled={disabled}>{icon}</Button></TooltipTrigger><TooltipContent>{label}</TooltipContent></Tooltip>; }
