@@ -1,24 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
+import { DeckApp } from "@/components/deck/DeckApp";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  validateSearch: z.object({
+    slide: z.coerce.number().int().positive().optional().catch(undefined),
+    print: z.string().optional().catch(undefined),
+  }),
+  head: () => ({
+    meta: [
+      { title: "AI & ML in Mineral Exploration Workshop" },
+      { name: "description", content: "An interactive five-hour workshop for geology and geophysics students on practical AI and machine learning in mineral exploration." },
+      { property: "og:title", content: "A Geologist's Guide to AI & Machine Learning" },
+      { property: "og:description", content: "Interactive mineral exploration workshop covering data, modelling, targeting, validation, and practical AI tools." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const search = Route.useSearch();
+  return <DeckApp initialSlide={(search.slide ?? 1) - 1} print={search.print !== undefined} />;
 }
