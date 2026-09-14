@@ -15,7 +15,7 @@ export function GeologicalFigure({ figure }: { figure: FigureData }) {
   const pin = active === null ? undefined : figure.pins?.[active];
   return (
     <figure className="relative overflow-hidden rounded-lg bg-ink">
-      <img src={images[figure.image]} alt={figure.caption} className="h-[510px] w-full object-cover" />
+      <img src={images[figure.image]} alt={figure.caption} className="h-[490px] w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
       {figure.pins?.map((item, index) => (
         <Button key={`${item.label}-${index}`} size="icon" aria-label={`Open annotation ${item.label}`} onClick={() => setActive(index)} className={`pin-pulse absolute size-12 rounded-full border-4 border-card font-mono text-lg ${accentBg[item.accent]}`} style={{ left: `${item.x}%`, top: `${item.y}%` }}>{item.label}</Button>
