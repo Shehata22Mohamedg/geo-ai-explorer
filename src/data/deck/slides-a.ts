@@ -149,7 +149,7 @@ export const slidesA: Slide[] = [
   {
     id: "m1-data-deluge",
     module: 1,
-    layout: "stats" as never as "split",
+    layout: "split",
     kicker: "01 · What changed",
     title: "Three things changed at once",
     lead: "AI is not new. The reason it works in exploration now is that data, compute and open software all crossed a threshold in the same decade.",
