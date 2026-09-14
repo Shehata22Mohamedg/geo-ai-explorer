@@ -45,14 +45,14 @@ export function DeckApp({ initialSlide = 0, print = false }: { initialSlide?: nu
 
   useEffect(() => {
     if (print) return;
-    document.title = `${index + 1}/${slides.length} — ${current.title}`;
+    document.title = `${index + 1}/${slides.length} — ${current?.title ?? "Workshop"}`;
     const onPop = () => {
       const value = Number(new URL(window.location.href).searchParams.get("slide") ?? 1);
       setIndex(Math.max(0, Math.min(slides.length - 1, value - 1)));
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
-  }, [current.title, index, print]);
+  }, [current?.title, index, print]);
 
   useEffect(() => {
     if (print) return;
@@ -83,6 +83,7 @@ export function DeckApp({ initialSlide = 0, print = false }: { initialSlide?: nu
   };
 
   if (print) return <div className="print-deck">{slides.map((slide, i) => <div key={slide.id} className="print-slide"><SlideRenderer slide={slide} number={i + 1} total={slides.length} /></div>)}</div>;
+  if (!current || !module) return null;
 
   return (
     <TooltipProvider delayDuration={250}>

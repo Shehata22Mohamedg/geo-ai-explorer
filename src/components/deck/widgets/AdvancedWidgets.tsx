@@ -12,7 +12,7 @@ const samples = [
 
 export function DecisionTreeWidget() {
   const [sample, setSample] = useState(1);
-  const s = samples[sample];
+  const s = samples[sample] ?? { id: "SOL-14", cu: 0.17, sulphur: 1.8, mag: 0.006, veins: 9 };
   const path = s.sulphur > 1 ? (s.mag < 0.01 ? (s.veins > 6 ? "Ore" : "Waste") : "Waste") : "Waste";
   const nodes = [
     { label: "Sulphur > 1.0%?", pass: s.sulphur > 1 },
@@ -54,7 +54,7 @@ export function DecisionTreeWidget() {
 
 export function OverfitWidget() {
   const [complexity, setComplexity] = useState([4]);
-  const c = complexity[0];
+  const c = complexity[0] ?? 4;
   const train = Math.min(99, 64 + c * 4);
   const test = Math.round(64 + c * 7 - Math.max(0, c - 4) * 12);
   return (
@@ -84,7 +84,7 @@ export function OverfitWidget() {
 
 export function ConfusionWidget() {
   const [threshold, setThreshold] = useState([55]);
-  const t = threshold[0];
+  const t = threshold[0] ?? 55;
   const tp = Math.max(8, Math.round(46 - t * 0.32));
   const fn = 30 - tp;
   const fp = Math.max(3, Math.round(54 - t * 0.55));
@@ -119,9 +119,10 @@ const points = Array.from({ length: 34 }, (_, i) => ({ x: 10 + ((i * 23) % 78), 
 export function KMeansWidget() {
   const [step, setStep] = useState(0);
   const labels = ["Raw Cu–Mo–As space", "Place three trial centres", "Assign nearest samples", "Move centres and repeat"];
+  const label = labels[step] ?? "Raw Cu–Mo–As space";
   return <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-    <Panel label={labels[step]}><Scatter showClusters={step >= 2} showCentres={step >= 1} /></Panel>
-    <div className="space-y-3"><Panel label="k-means · four steps"><p className="font-disp text-5xl text-ink">{step + 1}/4</p><p className="mt-2 text-inksoft">{labels[step]}</p><Button className="mt-5 w-full" onClick={() => setStep((step + 1) % 4)}>{step === 3 ? "Start again" : "Next step"}</Button></Panel><Panel label="Geologist's interpretation"><p className="text-inksoft">Clusters may represent host lithology, regolith domains, alteration—or merely lab batches. Map them before naming them.</p></Panel></div>
+    <Panel label={label}><Scatter showClusters={step >= 2} showCentres={step >= 1} /></Panel>
+    <div className="space-y-3"><Panel label="k-means · four steps"><p className="font-disp text-5xl text-ink">{step + 1}/4</p><p className="mt-2 text-inksoft">{label}</p><Button className="mt-5 w-full" onClick={() => setStep((step + 1) % 4)}>{step === 3 ? "Start again" : "Next step"}</Button></Panel><Panel label="Geologist's interpretation"><p className="text-inksoft">Clusters may represent host lithology, regolith domains, alteration—or merely lab batches. Map them before naming them.</p></Panel></div>
   </div>;
 }
 
@@ -154,8 +155,10 @@ const chain = [
 ];
 
 export function WorkflowChainWidget() {
-  const [active, setActive] = useState(0); const item = chain[active];
-  return <div><div className="grid grid-cols-6 gap-2">{chain.map((stage, i) => <Button key={stage.name} variant={active === i ? "default" : "outline"} className="h-20 whitespace-normal px-2" onClick={() => setActive(i)}>{i + 1}. {stage.name}</Button>)}</div><div className="mt-6 grid grid-cols-4 gap-4">{[["Data in", item.data], ["Method", item.method], ["Output", item.output], ["Human check", item.check]].map(([label, text], i) => <Panel key={label} label={label}><strong className={i === 3 ? "text-oxy" : "text-ink"}>{text}</strong></Panel>)}</div></div>;
+  const [active, setActive] = useState(0);
+  const item = chain[active] ?? { name: "Remote sensing", data: "Satellite spectra + DEM", method: "Classification", output: "Alteration map", check: "Walk and spectrally verify" };
+  const details = [{ label: "Data in", text: item.data }, { label: "Method", text: item.method }, { label: "Output", text: item.output }, { label: "Human check", text: item.check }];
+  return <div><div className="grid grid-cols-6 gap-2">{chain.map((stage, i) => <Button key={stage.name} variant={active === i ? "default" : "outline"} className="h-20 whitespace-normal px-2" onClick={() => setActive(i)}>{i + 1}. {stage.name}</Button>)}</div><div className="mt-6 grid grid-cols-4 gap-4">{details.map(({ label: detailLabel, text }, i) => <Panel key={detailLabel} label={detailLabel}><strong className={i === 3 ? "text-oxy" : "text-ink"}>{text}</strong></Panel>)}</div></div>;
 }
 
 export function CoreLoggingWidget() {

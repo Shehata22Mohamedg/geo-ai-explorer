@@ -5,7 +5,7 @@ import { AnomalyScatterWidget, BiasSpotterWidget, ConfusionWidget, CoreLoggingWi
 export function WidgetRegistry({ slide }: { slide: Slide }) {
   switch (slide.widget) {
     case "poll": return <PollWidget />;
-    case "quiz": return <QuizWidget questions={slide.quiz} />;
+    case "quiz": return <QuizWidget questions={slide.quiz ?? []} />;
     case "ml-vs-rules": return <MlVsRulesWidget />;
     case "data-shapes": return <DataShapesWidget />;
     case "clean-data": return <CleanDataWidget />;

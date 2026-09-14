@@ -248,7 +248,8 @@ const shapes = [
 
 export function DataShapesWidget() {
   const [active, setActive] = useState(0);
-  const s = shapes[active];
+  const s = shapes[active] ?? shapes[0];
+  if (!s) return null;
   return (
     <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)]">
       <div className="space-y-2">
@@ -409,7 +410,7 @@ export function CleanDataWidget() {
           <p className="font-disp text-4xl font-semibold text-ink">
             {[...found].filter((k) => {
               const [r, c] = k.split("-").map(Number);
-              return rows[r][c].bad;
+              return r === undefined || c === undefined ? false : Boolean(rows[r]?.[c]?.bad);
             }).length}
             <span className="text-inksoft">/{total}</span>
           </p>
@@ -422,9 +423,9 @@ export function CleanDataWidget() {
           {[...found]
             .map((k) => {
               const [r, c] = k.split("-").map(Number);
-              return rows[r][c];
+              return r === undefined || c === undefined ? undefined : rows[r]?.[c];
             })
-            .filter((c) => c.bad)
+            .filter((c): c is Cell => Boolean(c?.bad))
             .map((c, i) => (
               <div key={i} className="stratum-in rounded-lg bg-oxy/10 p-3 text-[13px] leading-snug">
                 <span className="font-mono font-bold text-oxy">{c.v || "—"}</span>{" "}
