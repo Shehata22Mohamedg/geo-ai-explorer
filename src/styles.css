@@ -167,8 +167,7 @@
 
 .print-note {
   width: 1920px;
-  height: 1080px;
-  overflow: hidden;
+  min-height: 1080px;
   break-after: page;
   page-break-after: always;
   background: var(--card);
