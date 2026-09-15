@@ -100,7 +100,7 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
                 <Block title="Example to tell">
                   <p>{t.example}</p>
                 </Block>
-                <Block title="Questions &amp; activities">
+                <Block title="Questions &amp; activities" flow>
                   <ol className="space-y-3">
                     {t.interaction.map((q, qi) => (
                       <li key={qi} className="note-item flex gap-3 text-inksoft">
