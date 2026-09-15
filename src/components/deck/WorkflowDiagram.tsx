@@ -12,7 +12,7 @@ export function WorkflowDiagram({ diagram }: { diagram: Diagram | undefined }) {
           <div key={lane.label} className="flex min-w-0 flex-1 items-stretch gap-3">
             <section className="flex min-w-0 flex-1 flex-col rounded-lg bg-card p-4 ring-1 ring-line">
               <span className="slide-chrome block border-b border-line pb-2 font-mono uppercase text-oxy">{lane.label}</span>
-              <div className="mt-3 flex min-h-0 flex-1 flex-col gap-3">
+              <div className="mt-3 flex min-h-0 flex-1 flex-col justify-center gap-4">
                 {lane.nodes.map((node) => (
                   <article key={node.title} className={`stratum-in rounded-md border-l-8 p-4 ${accentBorder[node.accent]} ${accentSoft[node.accent]}`}>
                     <h3 className={`slide-caption font-slab font-semibold ${accentText[node.accent]}`}>{node.title}</h3>
