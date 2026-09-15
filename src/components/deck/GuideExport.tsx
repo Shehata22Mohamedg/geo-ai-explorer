@@ -77,7 +77,7 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
                 <Block title="How to open">
                   <p>{t.opening}</p>
                 </Block>
-                <Block title="Walk the content">
+                <Block title="Walk the content" flow>
                   <dl className="space-y-4">
                     {t.walkthrough.map((w, wi) => (
                       <div key={`${w.label}-${wi}`} className="note-item">
@@ -126,9 +126,9 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
   );
 }
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({ title, children, flow }: { title: string; children: React.ReactNode; flow?: boolean }) {
   return (
-    <section>
+    <section className={flow ? "note-flow" : undefined}>
       <h3 className="note-label font-mono uppercase text-oxy">{title}</h3>
       <div className="note-body mt-3 text-inksoft">{children}</div>
     </section>

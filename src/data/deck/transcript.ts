@@ -242,7 +242,7 @@ function walkthroughFor(slide: Slide): { label: string; text: string }[] {
     slide.workflow.steps.forEach((s, i) =>
       out.push({
         label: `Gate ${i + 1} — ${s.phase}: ${s.title}`,
-        text: `${sentence(s.detail)} Human check: ${sentence(s.check)} Deliverable: ${sentence(s.output)} Ask what would make you stop at this gate.`,
+        text: `${sentence(s.detail)} Human check: ${sentence(s.check)} Deliverable: ${sentence(s.output)}${i === 0 || i === (slide.workflow?.steps.length ?? 0) - 1 ? " Ask the room what would make them stop at this gate rather than continue." : ""}`,
       }),
     );
   }
