@@ -17,11 +17,11 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
   return (
     <div className="print-deck bg-paper text-ink">
       <section className="print-slide flex flex-col justify-center px-32">
-        <p className="slide-kicker font-mono text-oxy">Instructor guide · complete package</p>
-        <h1 className="slide-title-lg mt-6 max-w-[1500px] font-slab font-semibold">
+        <p className="font-mono text-[22px] uppercase tracking-[0.14em] text-oxy">Instructor guide · complete package</p>
+        <h1 className="mt-6 max-w-[1560px] font-slab text-[86px] font-semibold leading-[1.03]">
           A Geologist's Guide to AI &amp; Machine Learning in Mineral Exploration
         </h1>
-        <p className="slide-body-lg mt-8 max-w-[1400px] text-inksoft">
+        <p className="mt-8 max-w-[1450px] text-[34px] leading-[1.28] text-inksoft">
           Every slide in delivery order, each followed by a full presenter transcript: what to say, how to
           explain it to geology and geophysics students, what to emphasise, which examples to tell, the
           questions and activities to run, and how to move to the next slide.
@@ -35,11 +35,11 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
           ].map((s) => (
             <div key={s.label} className="border-t-4 border-oxy pt-4">
               <strong className="font-disp text-5xl">{s.value}</strong>
-              <p className="slide-caption mt-2 text-inksoft">{s.label}</p>
+              <p className="mt-2 text-[24px] text-inksoft">{s.label}</p>
             </div>
           ))}
         </div>
-        <p className="slide-caption mt-12 max-w-[1400px] text-inksoft">
+        <p className="mt-14 max-w-[1450px] text-[26px] leading-[1.35] text-inksoft">
           How to use this document: each slide page is followed by a page headed with the same slide number.
           Deliver from the slide page and prepare from the transcript page. Timings assume the five-hour
           schedule; the reference-library modules are optional self-study material.
