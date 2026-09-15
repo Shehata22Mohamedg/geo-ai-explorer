@@ -94,14 +94,41 @@ export const modules: Module[] = [
   {
     index: 9,
     code: "09",
-    title: "Reference Workflows",
-    subtitle: "Optional animated field manual for independent study and project work",
+    title: "Reference Library",
+    subtitle: "How to use the field manual, and how to choose a method",
     time: "Optional · self-study",
     minutes: 0,
     accent: "slate",
     act: "Reference — After the Workshop",
   },
+  ...referenceModules(),
 ];
+
+function referenceModules(): Module[] {
+  const entries: Array<[string, string]> = [
+    ["Project Setup", "Turn a vague AI ambition into one testable geological decision"],
+    ["Data Audit & QA/QC", "From inherited files and legacy codes to trusted, traceable evidence"],
+    ["Geochemistry", "Sampling design, domaining, anomaly detection and vectoring"],
+    ["Remote Sensing", "Spectral evidence, false positives and ground-truthed alteration maps"],
+    ["Geophysics", "Physical contrasts, inversion non-uniqueness and discriminating tests"],
+    ["Core & Computer Vision", "Controlled capture, agreed labels and a geologist review queue"],
+    ["3D Geological Modelling", "Constraints, interpolation, alternatives and hole-by-hole updating"],
+    ["Prospectivity Mapping", "Mineral-system proxies, transparent integration and spatial validation"],
+    ["Target Ranking", "Separating prospectivity, confidence and feasibility before spending"],
+    ["Generative AI at Work", "Bounded prompts, verification and accountable professional review"],
+    ["Your First Project", "A two-weekend route from public data to a defensible case study"],
+  ];
+  return entries.map(([title, subtitle], i) => ({
+    index: 10 + i,
+    code: `R${String(i + 1).padStart(2, "0")}`,
+    title,
+    subtitle,
+    time: "Optional · self-study",
+    minutes: 0,
+    accent: (["oxy", "moss", "ochre", "slate"] as const)[i % 4] ?? "slate",
+    act: "Reference — After the Workshop",
+  }));
+}
 
 export const breaks = [
   { after: 2, label: "Break 1 — coffee", time: "1:30 – 1:45" },

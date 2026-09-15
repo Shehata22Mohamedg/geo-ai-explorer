@@ -171,19 +171,93 @@ const starterProject = makeWorkflow(
   ],
 );
 
-const workflowSlides: Array<[string, string, string, Workflow]> = [
-  ["project-setup", "Start with the decision, not the algorithm", "A reusable opening workflow for any exploration data project.", projectSetup],
-  ["data-audit", "From inherited files to trusted evidence", "The full GIS, database and QA/QC readiness workflow.", dataAudit],
-  ["geochem", "Geochemistry: sample to verified anomaly", "A defensible path from field design through multi-element vectoring.", geochem],
-  ["remote-sensing", "Remote sensing: pixels to field traverse", "Turn spectral evidence into a ground-checked alteration map.", remoteSensing],
-  ["geophysics", "Geophysics: signal to testable target", "Preserve physics, alternatives and uncertainty from survey to decision.", geophysics],
-  ["core-vision", "Core vision: image to reviewed geological log", "Design automation around controlled capture and a geologist review queue.", coreVision],
-  ["3d-model", "3D modelling: observations to plausible worlds", "Build, challenge and update models instead of presenting one certain surface.", modelling3d],
-  ["prospectivity", "Prospectivity: mineral system to ranked ground", "The complete evidence-integration workflow, with spatial validation.", prospectivity],
-  ["target-ranking", "Target ranking: evidence to funded programme", "Separate prospectivity, confidence and feasibility before committing spend.", targetRanking],
-  ["genai", "Generative AI: request to verified deliverable", "A safe professional workflow for reports, data work and code assistance.", genAi],
-  ["starter-project", "Your first portfolio project, start to finish", "A realistic two-weekend route from public data to a defensible case study.", starterProject],
+type Entry = { id: string; code: string; title: string; lead: string; workflow: Workflow };
+
+const entries: Entry[] = [
+  { id: "project-setup", code: "R01", title: "Start with the decision, not the algorithm", lead: "A reusable opening workflow for any exploration data project.", workflow: projectSetup },
+  { id: "data-audit", code: "R02", title: "From inherited files to trusted evidence", lead: "The full GIS, database and QA/QC readiness workflow.", workflow: dataAudit },
+  { id: "geochem", code: "R03", title: "Geochemistry: sample to verified anomaly", lead: "A defensible path from field design through multi-element vectoring.", workflow: geochem },
+  { id: "remote-sensing", code: "R04", title: "Remote sensing: pixels to field traverse", lead: "Turn spectral evidence into a ground-checked alteration map.", workflow: remoteSensing },
+  { id: "geophysics", code: "R05", title: "Geophysics: signal to testable target", lead: "Preserve physics, alternatives and uncertainty from survey to decision.", workflow: geophysics },
+  { id: "core-vision", code: "R06", title: "Core vision: image to reviewed geological log", lead: "Design automation around controlled capture and a geologist review queue.", workflow: coreVision },
+  { id: "3d-model", code: "R07", title: "3D modelling: observations to plausible worlds", lead: "Build, challenge and update models instead of presenting one certain surface.", workflow: modelling3d },
+  { id: "prospectivity", code: "R08", title: "Prospectivity: mineral system to ranked ground", lead: "The complete evidence-integration workflow, with spatial validation.", workflow: prospectivity },
+  { id: "target-ranking", code: "R09", title: "Target ranking: evidence to funded programme", lead: "Separate prospectivity, confidence and feasibility before committing spend.", workflow: targetRanking },
+  { id: "genai", code: "R10", title: "Generative AI: request to verified deliverable", lead: "A safe professional workflow for reports, data work and code assistance.", workflow: genAi },
+  { id: "starter-project", code: "R11", title: "Your first portfolio project, start to finish", lead: "A realistic two-weekend route from public data to a defensible case study.", workflow: starterProject },
 ];
+
+const laneGroups: Array<[string, number[]]> = [
+  ["Question & evidence", [0, 1]],
+  ["Preparation", [2, 3]],
+  ["Method & output", [4, 5]],
+  ["Validation & decision", [6]],
+];
+
+const diagramOf = (workflow: Workflow) => ({
+  intro: workflow.question,
+  feedback: workflow.decision,
+  lanes: laneGroups.map(([label, indexes]) => ({
+    label,
+    nodes: indexes.flatMap((i) => {
+      const step = workflow.steps[i];
+      return step ? [{ title: `${step.phase} — ${step.title}`, text: step.output, accent: step.accent }] : [];
+    }),
+  })),
+});
+
+const moduleSlides = entries.flatMap((entry, i): Slide[] => {
+  const module = 10 + i;
+  const steps = entry.workflow.steps;
+  return [
+    {
+      id: `m${module}-divider`,
+      module,
+      layout: "divider",
+      kicker: `${entry.code} · reference module`,
+      title: entry.title,
+      lead: entry.lead,
+      objectives: [
+        `Answer: ${entry.workflow.question}`,
+        `Work through ${steps.length} gates: ${steps.map((step) => step.phase).join(" → ")}`,
+        `Deliver: ${entry.workflow.decision}`,
+      ],
+    },
+    {
+      id: `m${module}-diagram`,
+      module,
+      layout: "diagram",
+      kicker: `${entry.code} · workflow diagram`,
+      title: "The workflow at a glance",
+      diagram: diagramOf(entry.workflow),
+      takeaway: "Read left to right; every stage produces a deliverable a geologist can check.",
+    },
+    {
+      id: `m${module}-animated`,
+      module,
+      layout: "widget",
+      kicker: `${entry.code} · animated workflow`,
+      title: entry.title,
+      lead: entry.lead,
+      widget: "animated-workflow",
+      workflow: entry.workflow,
+      activityLabel: "Play · pause · inspect every gate",
+    },
+    {
+      id: `m${module}-gates`,
+      module,
+      layout: "table",
+      kicker: `${entry.code} · checklist`,
+      title: "Gate-by-gate checklist you can reuse",
+      lead: "Print this table and tick each row before letting the result influence field spend.",
+      table: {
+        head: ["Gate", "Do this", "Human check", "Deliverable"],
+        rows: steps.map((step) => [`${step.phase}`, step.title, step.check, step.output]),
+      },
+    },
+  ];
+});
+
 
 export const slidesD: Slide[] = [
   {
@@ -196,7 +270,7 @@ export const slidesD: Slide[] = [
     objectives: [
       "Follow a geological question from raw evidence to a documented decision",
       "Know exactly where human validation belongs in every AI-assisted workflow",
-      "Reuse ten practical workflows without needing to become a programmer first",
+      "Work through eleven reference modules, each with a diagram, animation and checklist",
     ],
   },
   {
@@ -234,22 +308,24 @@ export const slidesD: Slide[] = [
       ],
     },
   },
-  ...workflowSlides.map(([id, title, lead, workflow]) => ({
-    id: `m9-${id}`,
-    module: 9,
-    layout: "widget" as const,
-    kicker: "09 · Animated workflow · reference",
-    title,
-    lead,
-    widget: "animated-workflow" as const,
-    workflow,
-    activityLabel: "Play · pause · inspect every gate",
-  })),
   {
-    id: "m9-close",
+    id: "m9-map",
     module: 9,
+    layout: "table",
+    kicker: "09 · Reference map",
+    title: "Eleven reference modules, each with its own diagram",
+    lead: "Every module opens with objectives, then a workflow diagram, an animated walkthrough and a reusable checklist.",
+    table: {
+      head: ["Module", "Workflow", "First gate"],
+      rows: entries.map((entry) => [entry.code, entry.title, entry.workflow.steps[0]?.phase ?? ""]),
+    },
+  },
+  ...moduleSlides,
+  {
+    id: "m20-close",
+    module: 20,
     layout: "quote",
-    kicker: "09 · Reference close",
+    kicker: "R11 · Reference close",
     title: "The habit that makes a beginner useful",
     quote: "Do not ask which algorithm looks advanced. Ask what geological decision is being made, what evidence supports it, how the result was tested on unseen ground, and what observation could prove it wrong.",
     attribution: "Use that sequence until it becomes automatic",
