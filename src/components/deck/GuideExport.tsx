@@ -70,53 +70,49 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
                 </div>
               </header>
 
-              <div className="mt-7 grid grid-cols-2 gap-10">
-                <div className="space-y-7">
-                  <Block title="Purpose of this slide">
-                    <p>{t.purpose}</p>
-                  </Block>
-                  <Block title="How to open">
-                    <p>{t.opening}</p>
-                  </Block>
-                  <Block title="Walk the content">
-                    <dl className="space-y-4">
-                      {t.walkthrough.map((w, wi) => (
-                        <div key={`${w.label}-${wi}`}>
-                          <dt className="font-semibold text-ink">{w.label}</dt>
-                          <dd className="mt-1 text-inksoft">{w.text}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </Block>
-                </div>
-                <div className="space-y-7">
-                  <Block title="Emphasise">
-                    <ul className="space-y-3">
-                      {t.emphasise.map((e, ei) => (
-                        <li key={ei} className="flex gap-3 text-inksoft">
-                          <span className="text-oxy">●</span>
-                          <span>{e}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </Block>
-                  <Block title="Example to tell">
-                    <p>{t.example}</p>
-                  </Block>
-                  <Block title="Questions &amp; activities">
-                    <ol className="space-y-3">
-                      {t.interaction.map((q, qi) => (
-                        <li key={qi} className="flex gap-3 text-inksoft">
-                          <span className="font-mono text-ochre">{String(qi + 1).padStart(2, "0")}</span>
-                          <span>{q}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  </Block>
-                  <Block title="Transition to the next slide">
-                    <p>{t.transition}</p>
-                  </Block>
-                </div>
+              <div className="note-columns mt-7">
+                <Block title="Purpose of this slide">
+                  <p>{t.purpose}</p>
+                </Block>
+                <Block title="How to open">
+                  <p>{t.opening}</p>
+                </Block>
+                <Block title="Walk the content">
+                  <dl className="space-y-4">
+                    {t.walkthrough.map((w, wi) => (
+                      <div key={`${w.label}-${wi}`} className="note-item">
+                        <dt className="font-semibold text-ink">{w.label}</dt>
+                        <dd className="mt-1 text-inksoft">{w.text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </Block>
+                <Block title="Emphasise">
+                  <ul className="space-y-3">
+                    {t.emphasise.map((e, ei) => (
+                      <li key={ei} className="note-item flex gap-3 text-inksoft">
+                        <span className="text-oxy">●</span>
+                        <span>{e}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Block>
+                <Block title="Example to tell">
+                  <p>{t.example}</p>
+                </Block>
+                <Block title="Questions &amp; activities">
+                  <ol className="space-y-3">
+                    {t.interaction.map((q, qi) => (
+                      <li key={qi} className="note-item flex gap-3 text-inksoft">
+                        <span className="font-mono text-ochre">{String(qi + 1).padStart(2, "0")}</span>
+                        <span>{q}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </Block>
+                <Block title="Transition to the next slide">
+                  <p>{t.transition}</p>
+                </Block>
               </div>
               <footer className="note-foot mt-8 flex justify-between border-t border-line pt-4 font-mono text-inksoft">
                 <span>Instructor guide — transcript for slide {t.slideNumber}</span>
