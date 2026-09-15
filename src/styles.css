@@ -182,7 +182,7 @@
 .print-note .note-label { font-size: 21px; letter-spacing: 0.1em; }
 .print-note .note-body { font-size: 22px; line-height: 1.42; }
 .print-note .note-foot { font-size: 19px; }
-.print-note .note-columns { columns: 2; column-gap: 72px; column-fill: auto; }
+.print-note .note-columns { columns: 2; column-gap: 72px; }
 .print-note .note-columns > section { break-inside: avoid-column; margin-bottom: 26px; }
 .print-note .note-item { break-inside: avoid; }
 @media print {
