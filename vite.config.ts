@@ -6,18 +6,36 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { devtools } from "@tanstack/devtools-vite";
 
 export default defineConfig({
+  base: "/geo-ai-explorer/",
+
   resolve: {
-    dedupe: ["react", "react-dom", "@tanstack/react-router", "@tanstack/react-start"],
+    dedupe: [
+      "react",
+      "react-dom",
+      "@tanstack/react-router",
+      "@tanstack/react-start",
+    ],
   },
+
   plugins: [
     devtools(),
-    tsConfigPaths({ projects: ["./tsconfig.json"] }),
-    tailwindcss(),
-    tanstackStart({
-      // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-      server: { entry: "server" },
+
+    tsConfigPaths({
+      projects: ["./tsconfig.json"],
     }),
+
+    tailwindcss(),
+
+    tanstackStart({
+      prerender: {
+        enabled: true,
+        autoSubfolderIndex: true,
+        autoStaticPathsDiscovery: true,
+        crawlLinks: true,
+        failOnError: true,
+      },
+    }),
+
     viteReact(),
   ],
 });
-
