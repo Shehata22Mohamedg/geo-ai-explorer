@@ -17,6 +17,7 @@ export type WidgetKey =
   | "workflow-chain"
   | "core-logging-cv"
   | "animated-workflow"
+  | "ai-hierarchy"
   | "glossary";
 
 export type AccentKey = "oxy" | "ochre" | "moss" | "slate";

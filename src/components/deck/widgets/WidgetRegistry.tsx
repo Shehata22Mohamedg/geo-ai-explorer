@@ -1,6 +1,6 @@
 import type { Slide } from "@/data/deck/types";
 import { PollWidget, QuizWidget, MlVsRulesWidget, DataShapesWidget, CleanDataWidget, FeatureBuilderWidget } from "./BasicWidgets";
-import { AnomalyScatterWidget, BiasSpotterWidget, ConfusionWidget, CoreLoggingWidget, DecisionTreeWidget, FeatureImportanceWidget, GlossaryWidget, KMeansWidget, OverfitWidget, RankTargetsWidget, WorkflowChainWidget } from "./AdvancedWidgets";
+import { AiHierarchyWidget, AnomalyScatterWidget, BiasSpotterWidget, ConfusionWidget, CoreLoggingWidget, DecisionTreeWidget, FeatureImportanceWidget, GlossaryWidget, KMeansWidget, OverfitWidget, RankTargetsWidget, WorkflowChainWidget } from "./AdvancedWidgets";
 import { AnimatedWorkflowWidget } from "./AnimatedWorkflowWidget";
 
 export function WidgetRegistry({ slide }: { slide: Slide }) {
@@ -22,6 +22,7 @@ export function WidgetRegistry({ slide }: { slide: Slide }) {
     case "animated-workflow": return <AnimatedWorkflowWidget workflow={slide.workflow} />;
     case "rank-targets": return <RankTargetsWidget />;
     case "bias-spotter": return <BiasSpotterWidget />;
+    case "ai-hierarchy": return <AiHierarchyWidget />;
     case "glossary": return <GlossaryWidget />;
     default: return <p className="text-inksoft">This demonstration is not available.</p>;
   }

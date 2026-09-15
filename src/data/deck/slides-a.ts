@@ -222,26 +222,11 @@ export const slidesA: Slide[] = [
   {
     id: "m1-what-ai-is",
     module: 1,
-    layout: "compare",
+    layout: "widget",
     kicker: "01 · Vocabulary",
-    title: "AI, machine learning, deep learning — and what none of them are",
-    lead: "Three nested circles, not three competing things. AI is the ambition, machine learning is the working method, deep learning is one powerful family within it.",
-    compare: {
-      leftTitle: "What these terms mean",
-      left: [
-        "Artificial intelligence — any system performing tasks we associate with human cognition.",
-        "Machine learning — a program that improves at a task by being shown examples, rather than being given rules.",
-        "Deep learning — machine learning with many-layered neural networks; the engine behind image and language models.",
-        "Generative AI — models that produce new text, images or code (ChatGPT, Copilot). Useful assistants; not prospectivity engines.",
-      ],
-      rightTitle: "What they are not",
-      right: [
-        "Not a truth machine. A model outputs the most consistent pattern in its training data — which may be a sampling artefact.",
-        "Not a geologist. It has no concept of ore genesis, no field intuition, and no idea what it has never seen.",
-        "Not objective. Every choice — which layers, which labels, which grid — is a human judgement encoded in numbers.",
-        "Not a replacement for drilling. Nothing is real until a hole says so.",
-      ],
-    },
+    title: "AI, machine learning, deep learning, LLMs — nested, not competing",
+    lead: "Three circles, one inside another, with LLMs at the centre. Same hierarchy, read outside in: what drives it, what it eats, where it earns its keep.",
+    widget: "ai-hierarchy",
     takeaway:
       "AI does not replace the geologist's pattern recognition. It does pattern recognition at a scale and dimensionality no human eye can match — and then needs you to say what it means.",
   },
@@ -278,6 +263,29 @@ export const slidesA: Slide[] = [
         accent: "slate",
       },
     ],
+  },
+  {
+    id: "m1-llm-types",
+    module: 1,
+    layout: "cards",
+    kicker: "01 · Generative AI",
+    title: "Types within generative AI & language models",
+    lead: "LLMs are not one thing either. Two shapes matter for exploration work today.",
+    cards: [
+      {
+        tag: "Text LLMs",
+        title: "Text-in, text-out",
+        text: "Reasoning, editing, and converting messy text into tables — turning a scanned 1987 assay letter into a clean spreadsheet row.",
+        accent: "oxy",
+      },
+      {
+        tag: "Multimodal models",
+        title: "Text, image and audio together",
+        text: "Models that can read a core photo alongside its logging notes, or transcribe a field voice memo and file it against the right hole ID.",
+        accent: "moss",
+      },
+    ],
+    note: "ChatGPT is not a database query tool: it predicts text sequences statistically — it does not perform precise spatial calculations or deterministic database math.",
   },
   {
     id: "m1-honest",

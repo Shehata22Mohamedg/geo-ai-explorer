@@ -234,3 +234,103 @@ export function GlossaryWidget() {
   const filtered = useMemo(() => terms.filter(([a,b]) => `${a} ${b}`.toLowerCase().includes(query.toLowerCase())), [query]);
   return <div><label className="flex items-center gap-3 rounded-lg border border-line bg-card px-4 py-3"><Search className="size-5 text-inksoft" /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search a term…" className="w-full bg-transparent text-lg text-ink outline-none" /></label><div className="mt-5 grid max-h-[430px] grid-cols-2 gap-3 overflow-y-auto pr-2">{filtered.map(([term, meaning]) => <div key={term} className="rounded-lg bg-paper/70 p-4 ring-1 ring-line"><strong className="text-oxy">{term}</strong><p className="mt-1 text-inksoft">{meaning}</p></div>)}</div></div>;
 }
+
+/* ------------------------------------------------ AI / ML / DL / LLM NESTED CIRCLES */
+const rings = [
+  {
+    key: "AI",
+    r: 190,
+    label: "Artificial Intelligence",
+    def: "The umbrella term for any software that mimics human decision-making — from hardcoded IF/THEN rules to autonomous systems.",
+    engine: "Hardcoded logic",
+    input: "Structured tables, standard rules",
+    use: "Tax software, basic database filtering",
+    color: "#e8dcc8",
+  },
+  {
+    key: "ML",
+    r: 135,
+    label: "Machine Learning",
+    def: "A subset of AI where algorithms learn statistical patterns directly from data, instead of following explicit hardcoded rules.",
+    engine: "Statistical pattern matching",
+    input: "Structured numerical datasets",
+    use: "Prospective mineral zones, credit risk scoring",
+    types: ["Supervised — labelled outcomes (ore grade from assays)", "Unsupervised — clusters with no answer key", "Reinforcement — trial-and-error rewards"],
+    color: "#c9a24b",
+  },
+  {
+    key: "DL",
+    r: 80,
+    label: "Deep Learning",
+    def: "A specialised subset of ML using multi-layered neural networks built for unstructured, highly complex inputs.",
+    engine: "Multi-layer neural networks",
+    input: "Images, video, audio, spectral data",
+    use: "Core photo logging, face recognition, satellite imagery",
+    color: "#8fae6f",
+  },
+];
+const llm = {
+  key: "LLM",
+  label: "Large Language Models",
+  def: "A specific application of Deep Learning trained on vast text archives (e.g. ChatGPT) to process, summarise and generate human language.",
+  engine: "Transformer neural networks",
+  input: "Unstructured text documents",
+  use: "Extracting data from historical PDF archives, drafting reports",
+  types: ["Text LLMs — text-in, text-out reasoning and editing", "Multimodal models — text, image and audio together"],
+  color: "#e0651c",
+};
+const misconceptions = [
+  { title: "Not a truth machine", text: "A model outputs the most consistent pattern in its training data — which may be a sampling artefact." },
+  { title: "Not a database query tool", text: "LLMs predict text sequences statistically; they do not perform precise spatial calculations or deterministic database math." },
+  { title: "Not a replacement for domain validation", text: "Models are mathematical pattern matchers — without geological expertise, bad inputs give confident false outputs." },
+  { title: "Not a replacement for drilling", text: "Nothing is real until a hole says so." },
+];
+
+export function AiHierarchyWidget() {
+  const size = 400;
+  const cx = size / 2;
+  const cy = size / 2;
+  return (
+    <div className="flex h-full flex-col gap-5 overflow-y-auto rounded-xl bg-ink p-6">
+      <div className="grid grid-cols-[360px_minmax(0,1fr)] items-start gap-8">
+        <svg viewBox={`0 0 ${size} ${size}`} className="sticky top-0 h-auto w-full">
+          {rings.map((ring) => (
+            <circle key={ring.key} cx={cx} cy={cy} r={ring.r} fill="none" stroke={ring.color} strokeWidth={2} strokeOpacity={0.75} />
+          ))}
+          {rings.map((ring, i) => (
+            <text key={ring.key} x={cx} y={cy - ring.r + (i === 0 ? 28 : 22)} textAnchor="middle" className="font-mono font-bold" fill={ring.color} fontSize={i === 0 ? 22 : 17}>
+              {ring.key}
+            </text>
+          ))}
+          <circle cx={cx} cy={cy} r={4} fill={llm.color} />
+          <text x={cx} y={cy + 20} textAnchor="middle" className="font-mono" fill={llm.color} fontSize={12}>
+            LLMs
+          </text>
+        </svg>
+        <div className="space-y-4">
+          {[...rings, llm].map((row) => (
+            <div key={row.key} className="border-l-4 pl-4" style={{ borderColor: row.color }}>
+              <p className="font-mono text-sm font-bold" style={{ color: row.color }}>{row.label}</p>
+              <p className="mt-1 text-xs leading-relaxed text-card/85">{row.def}</p>
+              <p className="mt-1 text-xs text-card/60">
+                <strong className="text-card/80">Engine</strong> {row.engine} · <strong className="text-card/80">Input</strong> {row.input} · <strong className="text-card/80">Use case</strong> {row.use}
+              </p>
+              {row.types && (
+                <ul className="mt-1 space-y-0.5 text-xs text-card/60">
+                  {row.types.map((t) => <li key={t}>· {t}</li>)}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-4 border-t border-card/15 pt-4">
+        {misconceptions.map((m) => (
+          <p key={m.title} className="text-xs text-card/70">
+            <strong className="text-card">{m.title}:</strong> {m.text}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}

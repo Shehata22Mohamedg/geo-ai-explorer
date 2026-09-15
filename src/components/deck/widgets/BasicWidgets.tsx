@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { AlertTriangle, FileText, Image as ImageIcon, Map, Sparkles, Table2 } from "lucide-react";
 import type { QuizQuestion } from "@/data/deck/types";
-import { Bar, Btn, Chip, Kicker, Panel, Reveal } from "../ui";
+import { accentBorder, accentSoft, accentText, Bar, Btn, Chip, Kicker, Panel, Reveal } from "../ui";
 
 export function PollWidget() {
   return (
@@ -218,7 +219,9 @@ export function MlVsRulesWidget() {
 const shapes = [
   {
     key: "Tabular",
+    icon: Table2,
     accent: "oxy" as const,
+    tagline: "Rows and columns, one sample per line",
     examples: "Assay tables, collar surveys, geochemistry, petrophysics, QA/QC records",
     methods: "Decision trees, random forest, gradient boosting, logistic regression, PCA",
     trap: "Rows are not independent — samples metres apart leak into one another",
@@ -226,7 +229,9 @@ const shapes = [
   },
   {
     key: "Spatial",
+    icon: Map,
     accent: "moss" as const,
+    tagline: "Anything tied to a coordinate or a grid",
     examples: "Geological polygons, magnetic and gravity grids, DEMs, structural lines, 3D block models",
     methods: "Convolutional nets on grids, kriging and geostatistics, spatial random forests",
     trap: "Coordinates as features let a model memorise location instead of learning geology",
@@ -234,7 +239,9 @@ const shapes = [
   },
   {
     key: "Image",
+    icon: ImageIcon,
     accent: "ochre" as const,
+    tagline: "Pixels — photos, scans and spectral cubes",
     examples: "Core photos, thin sections, satellite scenes, hyperspectral scans, SEM maps",
     methods: "CNNs, segmentation networks (U-Net), vision transformers, spectral unmixing",
     trap: "Lighting, wet vs dry core and missing scale cards become features the model learns",
@@ -242,7 +249,9 @@ const shapes = [
   },
   {
     key: "Text",
+    icon: FileText,
     accent: "slate" as const,
+    tagline: "Free-form language, not yet in a table",
     examples: "Geological logs, historical reports, drilling notes, company announcements",
     methods: "Named-entity extraction, text classification, embeddings, large language models",
     trap: "Vocabulary drifts between loggers, companies and decades — 'sericite' vs 'phyllic'",
@@ -255,38 +264,54 @@ export function DataShapesWidget() {
   const s = shapes[active] ?? shapes[0];
   if (!s) return null;
   return (
-    <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)]">
+    <div className="grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
       <div className="space-y-2">
-        {shapes.map((sh, i) => (
-          <button
-            key={sh.key}
-            type="button"
-            onClick={() => setActive(i)}
-            className={`flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left transition-colors ${
-              i === active ? "bg-ink text-paper" : "bg-paper/70 text-ink ring-1 ring-black/5"
-            }`}
-          >
-            <span className="font-mono text-[11px] font-bold">{String(i + 1).padStart(2, "0")}</span>
-            <span className="text-sm font-semibold">{sh.key}</span>
-          </button>
-        ))}
+        {shapes.map((sh, i) => {
+          const on = i === active;
+          const Icon = sh.icon;
+          return (
+            <button
+              key={sh.key}
+              type="button"
+              onClick={() => setActive(i)}
+              className={`flex w-full items-start gap-3 rounded-lg border-l-4 px-3 py-3 text-left transition-colors ${
+                on ? `${accentBorder[sh.accent]} bg-ink text-paper` : "border-transparent bg-paper/70 text-ink ring-1 ring-black/5 hover:bg-paper"
+              }`}
+            >
+              <span className={`mt-0.5 grid size-8 shrink-0 place-items-center rounded-md ${on ? accentSoft[sh.accent] : "bg-black/5"}`}>
+                <Icon className={`size-4 ${on ? accentText[sh.accent] : "text-inksoft"}`} />
+              </span>
+              <span className="min-w-0">
+                <span className="flex items-center gap-2">
+                  <span className="font-mono text-[11px] font-bold opacity-70">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-sm font-semibold">{sh.key}</span>
+                </span>
+                <span className={`mt-0.5 block text-[12px] leading-snug ${on ? "text-paper/70" : "text-inksoft"}`}>{sh.tagline}</span>
+              </span>
+            </button>
+          );
+        })}
       </div>
       <Panel label={`${s.key} data`} right={<Chip accent={s.accent}>{s.key}</Chip>}>
         <div className="grid gap-4 sm:grid-cols-2">
-          <div>
+          <div className="rounded-lg bg-card p-3 ring-1 ring-line">
             <Kicker>Examples in exploration</Kicker>
             <p className="mt-1 text-[14px] leading-snug text-ink">{s.examples}</p>
           </div>
-          <div>
+          <div className="rounded-lg bg-card p-3 ring-1 ring-line">
             <Kicker>Methods that suit it</Kicker>
             <p className="mt-1 text-[14px] leading-snug text-ink">{s.methods}</p>
           </div>
-          <div>
-            <Kicker>The failure mode it brings</Kicker>
+          <div className={`rounded-lg p-3 ring-1 ring-oxy/30 ${accentSoft.oxy}`}>
+            <Kicker>
+              <span className="inline-flex items-center gap-1.5"><AlertTriangle className="size-3.5 text-oxy" /> The failure mode it brings</span>
+            </Kicker>
             <p className="mt-1 text-[14px] leading-snug text-oxy">{s.trap}</p>
           </div>
-          <div>
-            <Kicker>Why it matters</Kicker>
+          <div className="rounded-lg bg-card p-3 ring-1 ring-line">
+            <Kicker>
+              <span className="inline-flex items-center gap-1.5"><Sparkles className="size-3.5 text-inksoft" /> Why it matters</span>
+            </Kicker>
             <p className="mt-1 text-[14px] leading-snug text-inksoft">{s.note}</p>
           </div>
         </div>
