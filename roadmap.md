@@ -12,4 +12,4 @@
 - [x] Add optional reference module without changing the five-hour workshop
 - [x] Add beginner decision guides and ten animated workflows
 - [x] Expand the glossary and presentation counts
-- [ ] Validate animations, navigation, print, and responsive layouts
+- [x] Validate animations, navigation, print, and responsive layouts
