@@ -104,11 +104,6 @@ const widgetGuide: Record<WidgetKey, { how: string; ask: string; watch: string }
     ask: "Ask what the review queue should contain and who signs off on the log.",
     watch: "Computer vision buys consistency and speed, not geological interpretation. The geologist still owns the log.",
   },
-  "core-logging": {
-    how: "Compare logs from different geologists on the same interval, then bring in the model's log as a third opinion.",
-    ask: "Ask how they would agree a label dictionary before any logging starts.",
-    watch: "Disagreement between human loggers sets the ceiling on any model trained from those logs.",
-  },
   "animated-workflow": {
     how: "Play the animated workflow once end to end without commentary, then step through it gate by gate, reading the human check and the deliverable for each stage.",
     ask: "Ask at each gate: what would make you stop here rather than continue?",
