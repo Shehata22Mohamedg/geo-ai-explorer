@@ -18,6 +18,37 @@ export const slidesA: Slide[] = [
     note: "Everything today is anchored in geology first. The AI vocabulary arrives only after the geological idea it describes.",
   },
   {
+    id: "about-shehata",
+    module: 0,
+    layout: "split",
+    kicker: "About me",
+    title: "Shehata Mekawy",
+    lead: "Hello everyone. I am Shehata Mekawy, a Surface Exploration Data Scientist. I help turn geological complexity into practical decisions through data products, automation, and machine learning.",
+    bullets: [
+      {
+        label: "01",
+        title: "My exploration background",
+        text: "I connect field data, geological databases and QA/QC operations to support better exploration decisions.",
+      },
+      {
+        label: "02",
+        title: "How I work",
+        text: "I design complete workflows that join data collection, validation, modelling and decision support.",
+      },
+      {
+        label: "03",
+        title: "What I build",
+        text: "I build reliable tools that remove repetitive work and help technical teams act with confidence.",
+      },
+      {
+        label: "04",
+        title: "My experience",
+        text: "I bring six-plus years across exploration operations, database reliability and applied data science.",
+      },
+    ],
+    note: "I am based in Al-Minya, Egypt. You can explore my projects, experience and contact details through the portfolio link above.",
+  },
+  {
     id: "arc",
     module: 0,
     layout: "table",
@@ -40,19 +71,19 @@ export const slidesA: Slide[] = [
         ["IV", "08 · Tools & careers", "10 min", "What do I do on Monday?"],
       ],
     },
-    note: "Ground rule: there is no basic question. If a term goes past unexplained, stop me — the vocabulary table at the end is our shared contract.",
+    note: "Ground rule: there is no basic question. If a term goes past unexplained, stop me.",
   },
   {
     id: "poll",
     module: 0,
     layout: "widget",
-    kicker: "Live poll · 3 min",
+    kicker: "Room survey · 3 min",
     title: "Calibrating the room",
-    lead: "Answer honestly — this sets the technical level for the next five hours. Then note something about who is in this room.",
+    lead: "Answer honestly and submit once. Your response will be recorded automatically so we can set the technical level for the next five hours.",
     widget: "poll",
     activityLabel: "Everyone · hands up or tap",
     takeaway:
-      "This room self-selected into a geology degree, not a computer-science one. So when someone tells you 'geologists find AI easy', ask who they actually surveyed. We will name that bias properly in Module 07.",
+      "The survey is a starting point, not a verdict. We will revisit these answers as we learn how sampling, bias and evidence shape every model.",
   },
   {
     id: "already-model",

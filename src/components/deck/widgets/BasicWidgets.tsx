@@ -2,59 +2,24 @@ import { useState } from "react";
 import type { QuizQuestion } from "@/data/deck/types";
 import { Bar, Btn, Chip, Kicker, Panel, Reveal } from "../ui";
 
-/* ------------------------------------------------ POLL */
-const pollQuestions = [
-  {
-    q: "Have you written any code — any language, any amount?",
-    options: ["Never", "A little (a class or a tutorial)", "Yes, regularly"],
-  },
-  {
-    q: "Have you used GIS software (QGIS / ArcGIS) on your own project?",
-    options: ["No", "Once or twice", "Comfortably"],
-  },
-  {
-    q: "Have you ever trained a machine-learning model?",
-    options: ["No", "Watched someone do it", "Yes"],
-  },
-  {
-    q: "How do you feel about AI entering exploration geology?",
-    options: ["Worried it replaces me", "Curious, unconvinced", "Keen to use it"],
-  },
-];
-
 export function PollWidget() {
-  const [answers, setAnswers] = useState<Record<number, number>>({});
-  const done = Object.keys(answers).length === pollQuestions.length;
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {pollQuestions.map((p, qi) => (
-        <Panel key={qi} label={`Question ${qi + 1}`}>
-          <p className="mb-3 text-[15px] font-semibold text-ink">{p.q}</p>
-          <div className="flex flex-wrap gap-2">
-            {p.options.map((o, oi) => (
-              <Btn
-                key={oi}
-                active={answers[qi] === oi}
-                onClick={() => setAnswers((a) => ({ ...a, [qi]: oi }))}
-              >
-                {o}
-              </Btn>
-            ))}
-          </div>
-        </Panel>
-      ))}
-      <Reveal show={done}>
-        <div className="rounded-xl bg-ink p-4 text-paper md:col-span-2">
-          <Kicker>
-            <span className="text-ochre">Instructor note</span>
-          </Kicker>
-          <p className="mt-2 text-sm text-paper/85">
-            Whatever the room answered, the technical bar for today is unchanged: read and interpret,
-            never write. And remember who we surveyed — a room of geologists. We will come back to
-            that in Module 07.
-          </p>
-        </div>
-      </Reveal>
+    <div className="flex h-full min-h-[620px] flex-col gap-4">
+      <a
+        href="https://forms.gle/ZykagqsVP4G4mWGv8"
+        target="_blank"
+        rel="noreferrer"
+        className="block rounded-xl bg-ink px-6 py-4 text-center font-mono text-3xl font-bold tracking-normal text-ochre transition-colors hover:bg-inksoft"
+      >
+        https://forms.gle/ZykagqsVP4G4mWGv8
+      </a>
+      <div className="min-h-0 flex-1 overflow-hidden rounded-xl bg-card ring-1 ring-line">
+      <iframe
+        title="Calibrating the Room: AI and Mineral Exploration survey"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeVvg_Xk_W9CWuQsCgUJikkr_75xmINz9r1TaZiBZjtXSxKDw/viewform?embedded=true"
+        className="h-full min-h-[620px] w-full border-0"
+      />
+      </div>
     </div>
   );
 }
@@ -105,24 +70,34 @@ export function QuizWidget({ questions }: { questions?: QuizQuestion[] }) {
 
 /* ------------------------------------------------ RULES vs ML */
 const intervals = [
-  { id: "A", cu: 0.42, s: 2.1, mag: 0.004, veins: 12, truth: "Ore" },
-  { id: "B", cu: 0.11, s: 0.4, mag: 0.031, veins: 2, truth: "Waste" },
-  { id: "C", cu: 0.18, s: 1.9, mag: 0.002, veins: 9, truth: "Ore" },
-  { id: "D", cu: 0.55, s: 0.2, mag: 0.028, veins: 1, truth: "Waste" },
-  { id: "E", cu: 0.09, s: 1.4, mag: 0.003, veins: 14, truth: "Ore" },
+  { id: "A", cu: 0.42, s: 2.1, mag: 0.004, veins: 12, truth: "Ore", score: 0.94 },
+  { id: "B", cu: 0.11, s: 0.4, mag: 0.031, veins: 2, truth: "Waste", score: 0.04 },
+  { id: "C", cu: 0.18, s: 1.9, mag: 0.002, veins: 9, truth: "Ore", score: 0.86 },
+  { id: "D", cu: 0.55, s: 0.2, mag: 0.028, veins: 1, truth: "Waste", score: 0.58 },
+  { id: "E", cu: 0.09, s: 1.4, mag: 0.003, veins: 14, truth: "Ore", score: 0.79 },
 ];
 
 export function MlVsRulesWidget() {
   const [mode, setMode] = useState<"rule" | "ml">("rule");
+  const [ruleThreshold, setRuleThreshold] = useState(0.2);
+  const [modelThreshold, setModelThreshold] = useState(0.5);
+  const [selected, setSelected] = useState("A");
   const predict = (i: (typeof intervals)[number]) =>
     mode === "rule"
-      ? i.cu > 0.2
+      ? i.cu > ruleThreshold
         ? "Ore"
         : "Waste"
-      : i.s > 1.0 && i.mag < 0.01 && i.veins > 5
+      : i.score >= modelThreshold
         ? "Ore"
         : "Waste";
-  const correct = intervals.filter((i) => predict(i) === i.truth).length;
+  const selectedInterval = intervals.find((interval) => interval.id === selected) ?? intervals[0]!;
+  const predicted = intervals.map((interval) => ({ interval, prediction: predict(interval) }));
+  const correct = predicted.filter(({ interval, prediction }) => prediction === interval.truth).length;
+  const truePositive = predicted.filter(({ interval, prediction }) => interval.truth === "Ore" && prediction === "Ore").length;
+  const falsePositive = predicted.filter(({ interval, prediction }) => interval.truth === "Waste" && prediction === "Ore").length;
+  const falseNegative = predicted.filter(({ interval, prediction }) => interval.truth === "Ore" && prediction === "Waste").length;
+  const precision = truePositive + falsePositive ? truePositive / (truePositive + falsePositive) : 0;
+  const recall = truePositive + falseNegative ? truePositive / (truePositive + falseNegative) : 0;
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
       <Panel
@@ -150,12 +125,12 @@ export function MlVsRulesWidget() {
               <th className="py-2">Logged</th>
             </tr>
           </thead>
-          <tbody>
+              <tbody>
             {intervals.map((i) => {
               const p = predict(i);
               const ok = p === i.truth;
               return (
-                <tr key={i.id} className="border-b border-line/60">
+                <tr key={i.id} onClick={() => setSelected(i.id)} className={`cursor-pointer border-b border-line/60 ${selected === i.id ? "bg-ochre/10" : "hover:bg-paper"}`}>
                   <td className="py-2 font-mono font-bold">{i.id}</td>
                   <td className="py-2 font-mono">{i.cu.toFixed(2)}</td>
                   <td className="py-2 font-mono">{i.s.toFixed(1)}</td>
@@ -170,31 +145,60 @@ export function MlVsRulesWidget() {
             })}
           </tbody>
         </table>
+        <div className="mt-4 grid gap-3 border-t border-line pt-4 sm:grid-cols-2">
+          <label className="text-[12px] font-semibold text-ink">
+            Rule Cu threshold: <span className="font-mono text-oxy">{ruleThreshold.toFixed(2)} %</span>
+            <input type="range" min="0.05" max="0.6" step="0.01" value={ruleThreshold} onChange={(event) => setRuleThreshold(Number(event.target.value))} className="mt-2 w-full accent-[var(--oxy)]" />
+          </label>
+          <label className="text-[12px] font-semibold text-ink">
+            Model score threshold: <span className="font-mono text-oxy">{modelThreshold.toFixed(2)}</span>
+            <input type="range" min="0.1" max="0.9" step="0.05" value={modelThreshold} onChange={(event) => setModelThreshold(Number(event.target.value))} className="mt-2 w-full accent-[var(--oxy)]" />
+          </label>
+        </div>
       </Panel>
       <div className="space-y-3">
         <Panel label="Score">
           <p className="font-disp text-4xl font-semibold text-ink">{correct}/5</p>
-          <p className="mt-1 text-[13px] text-inksoft">intervals classified correctly</p>
+          <p className="mt-1 text-[13px] text-inksoft">accuracy · not the whole story</p>
+          <div className="mt-3 grid grid-cols-2 gap-2 text-[12px]">
+            <span>Precision <strong className="font-mono text-ink">{Math.round(precision * 100)}%</strong></span>
+            <span>Recall <strong className="font-mono text-ink">{Math.round(recall * 100)}%</strong></span>
+          </div>
+        </Panel>
+        <Panel label="Confusion matrix">
+          <div className="grid grid-cols-2 gap-2 text-center text-[11px]">
+            <div className="rounded bg-moss/10 p-2"><strong className="block font-mono text-moss">{truePositive}</strong>True ore found</div>
+            <div className="rounded bg-oxy/10 p-2"><strong className="block font-mono text-oxy">{falseNegative}</strong>Ore missed</div>
+            <div className="rounded bg-ochre/10 p-2"><strong className="block font-mono text-ochre">{falsePositive}</strong>Waste flagged</div>
+            <div className="rounded bg-line p-2"><strong className="block font-mono text-ink">{5 - truePositive - falseNegative - falsePositive}</strong>Waste rejected</div>
+          </div>
+        </Panel>
+        <Panel label={`Why interval ${selectedInterval.id}?`}>
+          <p className="text-[13px] leading-snug text-inksoft">
+            {mode === "rule"
+              ? `${selectedInterval.id} is ${selectedInterval.cu.toFixed(2)} % Cu, so the rule ${selectedInterval.cu > ruleThreshold ? "flags it as ore" : "rejects it as waste"}.`
+              : `The model assigns ${Math.round(selectedInterval.score * 100)}% probability of ore; the current threshold is ${Math.round(modelThreshold * 100)}%.`}
+          </p>
         </Panel>
         <Panel label={mode === "rule" ? "The rule a geologist wrote" : "What the model learned"}>
           {mode === "rule" ? (
             <>
               <code className="block rounded bg-ink/5 p-2 font-mono text-[12px] text-ink">
-                if Cu &gt; 0.20 % → Ore
+                if Cu &gt; {ruleThreshold.toFixed(2)} % → Ore
               </code>
               <p className="mt-2 text-[13px] leading-snug text-inksoft">
-                Transparent, instantly auditable — and blind to the low-grade sulphide-rich intervals
-                and to the barren high-Cu malachite staining in D.
+                Transparent and instantly auditable, but it uses one hand-picked feature and can miss
+                low-grade sulphide-rich intervals or trust barren high-Cu staining.
               </p>
             </>
           ) : (
             <>
               <code className="block rounded bg-ink/5 p-2 font-mono text-[12px] text-ink">
-                if S &gt; 1.0 % and mag &lt; 0.010 SI and veins &gt; 5 → Ore
+                score(features) ≥ {modelThreshold.toFixed(2)} → Ore
               </code>
               <p className="mt-2 text-[13px] leading-snug text-inksoft">
-                Nobody wrote this. It emerged from labelled examples and encodes real porphyry
-                physics: sulphidation plus magnetite destruction plus vein density.
+                The score is learned from labelled examples. Raising the threshold usually improves
+                precision while lowering recall — a trade-off that depends on drilling cost and risk.
               </p>
             </>
           )}

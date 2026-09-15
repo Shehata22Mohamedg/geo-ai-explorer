@@ -1,0 +1,970 @@
+Revised Educational Philosophy
+The audience has three characteristics that should drive every decision:
+1. They are geologists/geophysicists first
+Their existing mental models are likely based on:
+rocks 
+minerals 
+structures 
+maps 
+sections 
+geochemical anomalies 
+geophysical signatures 
+drill holes 
+interpretation 
+exploration decisions 
+We should use those concepts as the bridge into AI.
+For example, don't begin with:
+“Machine learning is a subset of artificial intelligence in which algorithms learn patterns from data…”
+Instead:
+“Imagine you have thousands of drill-hole intervals where experienced geologists have already identified the lithology. Could a computer learn the characteristics that distinguish those lithologies and then help classify new intervals?”
+Then introduce:
+This is supervised machine learning.
+The terminology comes after the geological idea.
+2. AI is not their first priority
+This is extremely important.
+We should not try to teach them everything:
+Python programming 
+linear algebra 
+calculus 
+probability theory 
+neural-network mathematics 
+advanced statistics 
+TensorFlow/PyTorch 
+computer vision architectures 
+advanced GIS 
+advanced database engineering 
+Those would consume the workshop without achieving the main objective.
+Instead, we teach them enough to become AI-literate exploration geologists.
+Their learning progression should be:
+Awareness → Understanding → Application → Critical Evaluation → Career Direction
+not:
+Programming → Algorithms → Mathematics → AI
+3. They need a strong foundation before ML
+I would therefore expand the introduction and data foundations.
+The revised five-hour structure should be:
+This is a better fit for beginners.
+MODULE 1
+Mineral Exploration in the Age of AI
+40 minutes
+The objective is not to teach AI yet.
+The objective is to make students care.
+Opening scenario
+I would open with a question:
+“You are the exploration geologist responsible for 1,000 km² of ground. You have limited money and can drill only 10 holes. Where do you drill?”
+Then show them progressively:
+Stage 1
+A geological map.
+Ask:
+Where would you investigate?
+Stage 2
+Add geochemistry.
+Ask:
+Does your decision change?
+Stage 3
+Add magnetics.
+Does your interpretation change again?
+Stage 4
+Add structures.
+Stage 5
+Add remote sensing.
+Stage 6
+Add historical drilling.
+Now they are dealing with a multi-dimensional exploration problem.
+Then ask:
+“What if you had 50 million measurements?”
+That's the reason AI enters the story.
+The fundamental exploration problem
+Students should understand that exploration is fundamentally about:
+Finding patterns
+Combining evidence
+Reducing uncertainty
+Making decisions
+Testing hypotheses
+AI can potentially assist with all five.
+What changed in modern exploration?
+We explain the progression:
+Traditional exploration
+Geologist:
+Observe → Interpret → Decide
+Modern exploration
+Geologist:
+Observe → Collect data → Integrate datasets → Analyse → Interpret → Decide
+Data-rich exploration
+Geologist + computational tools:
+Observe → Collect → Integrate → Analyse → Model → Predict → Interpret → Validate → Decide
+The human geological interpretation remains central.
+Introduce AI carefully
+Only after establishing the problem:
+Artificial Intelligence is a broad term for computer systems designed to perform tasks that normally require aspects of human intelligence.
+Then:
+Machine Learning is an approach where computers learn patterns from examples/data rather than being explicitly programmed with every rule.
+Then:
+Deep Learning is a family of machine-learning methods based on neural networks that can learn complex representations, particularly from large datasets such as images, signals and sequences.
+That's enough at this stage.
+Important distinction
+Students should immediately understand:
+AI ≠ ML
+ML ≠ Deep Learning
+AI ≠ ChatGPT
+And:
+AI ≠ automatically intelligent geology
+This distinction will prevent many misconceptions later.
+Activity 1 — “Does this need AI?”
+Give students exploration tasks.
+For each one:
+A. Useful application of AI
+B. Possible application but not necessarily necessary
+C. AI is probably not the appropriate solution
+Examples:
+Automatically identify lithology from core photographs 
+Calculate the average grade of a dataset 
+Find duplicate drill-hole records 
+Identify geochemical anomalies 
+Interpret a complex geological setting 
+Convert metres to feet 
+Predict mineral prospectivity 
+Decide whether a mining project is economically viable 
+The purpose isn't getting every answer correct.
+It's teaching:
+AI should solve a problem, not exist for its own sake.
+MODULE 2
+From Rocks to Data
+55 minutes
+I would make this one of the largest sections because students can't understand ML until they understand the data.
+Start with something familiar
+Show a drill hole.
+A geologist sees:
+depth 
+lithology 
+alteration 
+mineralisation 
+structures 
+fractures 
+recovery 
+samples 
+assays 
+The computer sees something different.
+For example:
+This is a major conceptual bridge.
+The central concept
+AI cannot directly understand “a geological story.” It receives representations of information.
+That is why data preparation matters.
+Exploration data universe
+Students should understand the major data types:
+Geological
+lithology 
+alteration 
+mineralisation 
+structures 
+weathering 
+oxidation 
+geological contacts 
+Geochemical
+Au 
+Ag 
+Cu 
+Pb 
+Zn 
+As 
+pathfinder elements 
+multi-element assays 
+Geophysical
+magnetic 
+gravity 
+radiometric 
+IP 
+EM 
+seismic 
+Drilling
+collar 
+survey 
+intervals 
+assays 
+recovery 
+RQD 
+geological logging 
+Remote sensing
+multispectral 
+hyperspectral 
+DEM 
+satellite imagery 
+Imagery
+core photography 
+outcrop imagery 
+microscopic imagery 
+drone imagery 
+Data quality
+This needs considerable attention.
+Ask:
+“If we give an AI model 1 million geological records, does that automatically make it good?”
+No.
+Discuss:
+Missing data
+Duplicate records
+Wrong coordinates
+Wrong units
+Incorrect assays
+Incorrect geological codes
+Poorly logged intervals
+Inconsistent historical terminology
+Detection limits
+Sampling bias
+Analytical uncertainty
+This introduces the principle:
+More data is not necessarily better data.
+Data → Information → Knowledge → Decision
+A very important framework:
+RAW DATA
+   ↓
+Information
+   ↓
+Patterns
+   ↓
+Geological interpretation
+   ↓
+Knowledge
+   ↓
+Exploration decision
+AI is mainly useful in the pattern extraction / prediction part.
+It does not automatically transform a statistical pattern into geological knowledge.
+Statistics without overwhelming them
+Introduce:
+distributions 
+mean 
+median 
+standard deviation 
+correlation 
+outliers 
+anomalies 
+But always connect them to geology.
+For example:
+Question
+If Au has:
+95% of samples below 0.1 ppm 
+a small group above 1 ppm 
+what might we investigate?
+Then introduce:
+Statistical anomaly
+But immediately explain:
+A statistical anomaly is not automatically a mineral deposit.
+Practical demonstration
+Use a realistic exploration dataset.
+Students see:
+Table
+Then:
+Histogram
+Then:
+Scatter plot
+Then:
+Map
+Then:
+Multi-element relationship
+The objective is to demonstrate that exploration data analysis itself already involves pattern recognition.
+Activity 2 — “Find the anomaly”
+Give students a map with:
+Au 
+As 
+Cu 
+structure 
+lithology 
+Ask:
+“Which anomaly would you investigate first?”
+Then reveal an additional layer.
+Students may change their answer.
+This teaches data integration before introducing ML.
+BREAK — 15 MINUTES
+MODULE 3
+AI & Machine Learning Without the Jargon
+60 minutes
+Now the students are ready.
+This module should answer:
+“What actually happens when we give geological data to a machine-learning model?”
+Start with human learning
+Suppose students receive 100 examples of:
+granite 
+basalt 
+shale 
+limestone 
+They begin noticing:
+colour 
+texture 
+mineralogy 
+grain size 
+density 
+magnetic properties 
+Eventually they can classify a new sample.
+Machine learning is conceptually similar:
+Examples
+   ↓
+Patterns
+   ↓
+Model
+   ↓
+New example
+   ↓
+Prediction
+Introduce features
+A feature is simply:
+A measurable piece of information used by the model.
+For a lithology model:
+density 
+magnetic susceptibility 
+elemental concentrations 
+alteration indicators 
+For a prospectivity model:
+distance to structure 
+Au anomaly 
+As anomaly 
+lithology 
+magnetic response 
+alteration 
+Introduce labels
+A label is:
+The known answer we want the model to learn to predict.
+Example:
+Features:
+Au + As + structure + lithology
+Label:
+Known mineralisation / no known mineralisation
+Supervised learning
+Explain using geology.
+KNOWN EXAMPLES
+Geological features ─────→ Known outcome
+       │                        │
+       │                        ↓
+       └──────────────→ ML Model
+                              │
+                              ↓
+                     Unknown location
+                              │
+                              ↓
+                         Prediction
+Classification
+Example:
+What lithology is this?
+Output:
+Granite / Basalt / Shale / etc.
+Regression
+Example:
+What is the predicted value?
+Output:
+Au = 0.73 ppm
+or perhaps a predicted continuous geological/geochemical property.
+Clustering
+Now remove the labels.
+Ask:
+“Can we find groups without telling the algorithm what the groups are?”
+This introduces unsupervised learning.
+Then make the crucial point:
+A machine-learning cluster is not automatically a geological domain.
+Anomaly detection
+Show:
+Normal population
+••••••••••••••••••••••••••
+                    •
+                      •
+                         •
+Ask:
+What might those unusual observations represent?
+Possibilities:
+mineralisation 
+contamination 
+analytical error 
+unusual lithology 
+sampling problem 
+genuinely interesting geology 
+This is an excellent place to teach critical thinking.
+Decision trees
+I would definitely introduce decision trees because they are extremely intuitive for this audience.
+Example:
+              Au anomaly?
+              /          \
+            Yes           No
+            /              \
+     Near structure?       Low
+       /      \
+     Yes       No
+      ↓         ↓
+   High       Medium
+ prospectivity
+Then explain:
+This is conceptually similar to how a geologist might construct a decision process.
+Random forests
+Explain conceptually rather than mathematically:
+Instead of relying on one decision tree, combine many trees and aggregate their predictions.
+No need to derive bagging.
+Neural networks
+Students should understand the idea, not the mathematics.
+Use:
+INPUTS
+Pixels / signals / measurements
+        ↓
+     Layers
+        ↓
+Learned patterns
+        ↓
+Prediction
+Then explain why they are powerful for:
+images 
+remote sensing 
+core photographs 
+geophysical signals 
+But also explain that they generally require appropriate data and careful validation.
+What about ChatGPT?
+Because students will inevitably associate AI with generative AI, explain:
+Generative AI
+Examples:
+text generation 
+image generation 
+coding assistants 
+document analysis 
+Predictive ML
+Examples:
+prospectivity prediction 
+lithology classification 
+grade prediction 
+anomaly detection 
+These are related through the broader AI field but solve different types of problems.
+Very important:
+“AI doesn't discover gold.”
+It can:
+identify patterns associated with known mineralisation.
+It can:
+prioritize targets.
+It can:
+classify geological information.
+It can:
+assist interpretation.
+It can:
+automate repetitive work.
+But it cannot guarantee:
+“There is an economic deposit here.”
+ML workflow
+Students should memorize this—not equations:
+1. Define problem
+       ↓
+2. Collect data
+       ↓
+3. Understand data
+       ↓
+4. Clean data
+       ↓
+5. Prepare features
+       ↓
+6. Split data
+       ↓
+7. Train model
+       ↓
+8. Test model
+       ↓
+9. Interpret results
+       ↓
+10. Geological validation
+       ↓
+11. Exploration decision
+This becomes the backbone of the rest of the workshop.
+MODULE 4
+Complete AI-Assisted Exploration Workflow
+60 minutes
+This should be the main practical learning experience.
+Case Study
+“Where Should We Drill Next?”
+We will create a fictional but geologically realistic exploration project.
+Target commodity
+Gold
+Geological setting
+A simplified orogenic gold exploration environment.
+The students are given:
+regional geology 
+structures 
+Au geochemistry 
+pathfinder elements 
+magnetic data 
+alteration information 
+historical drilling 
+known mineralised occurrences 
+Step 1 — Geological question
+Where are the areas most prospective for gold mineralisation?
+Step 2 — Geological hypothesis
+Students identify potential controls:
+structural corridors 
+favourable lithologies 
+alteration 
+geochemical anomalies 
+geophysical response 
+Step 3 — Data integration
+Bring the datasets together.
+This is an important concept:
+AI becomes useful when we can represent multiple evidence sources together.
+Step 4 — Data preparation
+Show intentionally messy data.
+For example:
+Sample     Au      As       Lithology      X        Y
+A001       0.03    15       Basalt         ...      ...
+A002       0.05    21       basalt         ...      ...
+A003       -       18       BAS            ...      ...
+A004       9999    17       Basalt         ...      ...
+Ask students:
+Would you give this directly to an ML model?
+Absolutely not.
+Then identify:
+missing values 
+inconsistent codes 
+suspicious values 
+unit problems 
+detection limits 
+Step 5 — Feature engineering
+This is an important but beginner-friendly concept.
+Instead of simply using:
+X and Y
+we can derive:
+distance to structure 
+geochemical anomaly score 
+alteration indicator 
+lithological favourability 
+magnetic anomaly 
+pathfinder association 
+Explain:
+Feature engineering means transforming raw information into variables that better represent the problem we want the model to solve.
+This is where geology becomes extremely valuable.
+Step 6 — Train the model
+Use a relatively interpretable model first.
+For teaching purposes, I would demonstrate:
+Random Forest
+rather than jumping directly into deep learning.
+Why?
+Because students can understand:
+Many decision trees → combined prediction
+without needing advanced mathematics.
+Step 7 — Evaluate
+Show:
+confusion matrix 
+accuracy 
+precision/recall 
+ROC-AUC conceptually 
+But then immediately challenge the metric.
+Ask:
+“Is 95% accuracy necessarily a good exploration model?”
+Students should eventually answer:
+No.
+Step 8 — Produce prospectivity map
+Convert model output into:
+Low → Medium → High prospectivity
+Now the students finally see the payoff.
+Step 9 — Geological interpretation
+This is where the geologist comes back in.
+Ask:
+Does the high-prospectivity area:
+coincide with structures? 
+occur in favourable rocks? 
+have supporting geochemistry? 
+have sufficient data? 
+have reasonable geophysical evidence? 
+resemble known mineralisation? 
+represent interpolation or extrapolation? 
+Step 10 — Drill decision
+Give students a budget:
+Only 3 holes can be drilled.
+Let them choose.
+Step 11 — Reveal new information
+This is where the case study becomes powerful.
+One target:
+High AI score + excellent geological support
+One target:
+High AI score + poor geological support
+One target:
+Moderate AI score + excellent geological evidence
+Ask:
+Which three holes would you drill?
+This teaches the central message:
+AI output is evidence—not the decision.
+MODULE 5
+AI Across the Exploration Workflow
+40 minutes
+Now we broaden the students' understanding.
+Instead of going deeply into algorithms, we create an AI exploration landscape.
+Geological mapping
+Potential applications:
+lithology classification 
+alteration mapping 
+structural feature detection 
+automated feature extraction 
+Geochemistry
+Potential applications:
+anomaly detection 
+element association 
+classification 
+prospectivity modelling 
+pattern recognition 
+Geophysics
+Potential applications:
+anomaly detection 
+interpretation assistance 
+feature extraction 
+classification 
+inversion-related workflows 
+Remote sensing
+Potential applications:
+alteration detection 
+mineral mapping 
+land classification 
+structural interpretation 
+Drill holes
+Potential applications:
+lithology prediction 
+automated interval classification 
+correlation assistance 
+anomaly detection 
+data QA/QC 
+Core photography
+This deserves a visual demonstration.
+CORE PHOTO
+     ↓
+IMAGE
+     ↓
+COMPUTER VISION
+     ↓
+FEATURES
+     ↓
+CLASSIFICATION / SEGMENTATION
+     ↓
+GEOLOGICAL INFORMATION
+Explain that modern computer vision can learn visual patterns that are difficult to encode manually.
+But again:
+The output still requires geological validation.
+Exploration targeting
+This is where all the previous concepts converge:
+Geology
+   +
+Geochemistry
+   +
+Geophysics
+   +
+Structure
+   +
+Remote Sensing
+   +
+Drilling
+       ↓
+     AI / ML
+       ↓
+Prospectivity
+       ↓
+Geologist
+       ↓
+Targets
+       ↓
+Field validation
+       ↓
+Drilling
+MODULE 6
+Can We Trust AI?
+30 minutes
+I would make this short but powerful.
+The students have just seen AI produce a prospectivity map.
+Now we challenge it.
+The “92% Prospectivity” Problem
+Show:
+Target A — AI prospectivity: 92%
+Ask:
+“Would you drill it?”
+Then progressively reveal:
+Problem 1
+Almost all training samples came from known mineralised areas.
+Problem 2
+The target is outside the geological conditions represented in the training data.
+Problem 3
+There is very little data in that area.
+Problem 4
+The model was randomly split rather than spatially validated.
+Problem 5
+One important feature contains leakage.
+Now ask again:
+“Would you drill it?”
+This creates a much deeper understanding than simply listing model limitations.
+The five questions every geologist should ask an AI model
+I would give students a memorable framework:
+1. What data did you learn from?
+2. Is that data representative?
+3. How was the model tested?
+4. Why did it make this prediction?
+5. Does the prediction make geological sense?
+If students remember these five questions, the workshop has achieved a major objective.
+Final Career Discussion
+Instead of saying:
+“Everyone should become a data scientist.”
+I'd say:
+There are several possible paths.
+Exploration Geologist
+Geology
+GIS 
+Data literacy 
+AI awareness 
+Data-Oriented Geologist
+Geology
+Statistics 
+SQL 
+Python 
+GIS 
+ML 
+Exploration Data Scientist
+Geology
+Programming 
+Statistics 
+ML 
+Databases 
+Geospatial analysis 
+Geophysicist + AI
+Geophysics
+signal processing 
+Python 
+ML 
+remote sensing 
+Students can choose their depth.
+What They Should Learn Next
+Rather than overwhelming them, give them a progression.
+Level 1 — Everyone
+Learn:
+data literacy 
+Excel/spreadsheets 
+basic statistics 
+GIS 
+databases 
+AI fundamentals 
+Level 2 — Interested students
+Learn:
+Python 
+pandas 
+NumPy 
+visualization 
+SQL 
+machine learning fundamentals 
+Level 3 — Specialized students
+Learn:
+spatial statistics 
+advanced ML 
+deep learning 
+computer vision 
+geospatial ML 
+cloud computing 
+geological modelling 
+The key message:
+They don't need Level 3 to benefit from AI.
+Revised Technical Depth
+For this particular audience, I would roughly target:
+60% Geological concepts & applications
+20% AI/ML concepts
+10% Data/statistics
+5% programming demonstrations
+5% mathematics
+These aren't rigid percentages; they're a design guide.
+The programming and mathematics should support understanding rather than become independent subjects.
+What I Would Explicitly NOT Teach
+Given only five hours and the students' background, I would avoid detailed treatment of:
+calculus 
+matrix algebra 
+gradient derivations 
+backpropagation mathematics 
+SVM mathematics 
+Bayesian mathematics 
+hyperparameter optimization theory 
+CNN architecture mathematics 
+transformer architecture 
+reinforcement learning 
+GANs 
+MLOps 
+deployment architecture 
+advanced cloud infrastructure 
+These can appear in a “Where to go next” slide, but shouldn't consume workshop time.
+One More Important Change: We Should Not Make It Too Technical Too Early
+The progression should look like:
+                GEOLOGY
+                   ↓
+          Exploration problem
+                   ↓
+             Exploration data
+                   ↓
+           Pattern recognition
+                   ↓
+          "Can computers help?"
+                   ↓
+                 AI
+                   ↓
+                  ML
+                   ↓
+           ML applications
+                   ↓
+       End-to-end case study
+                   ↓
+             Model criticism
+                   ↓
+        Geological validation
+                   ↓
+           Exploration decision
+                   ↓
+          Future career skills
+Not:
+AI definition
+↓
+Python
+↓
+Statistics
+↓
+Algorithms
+↓
+Neural networks
+↓
+Geology examples
+The second approach is much more likely to lose geology students.
+The Desired Student Experience
+At the beginning:
+“AI isn't really my field.”
+After 1 hour:
+“Okay, I understand why exploration generates data.”
+After 2 hours:
+“I understand roughly how machine learning learns patterns.”
+After 3–4 hours:
+“I can see how ML could actually help with exploration targeting.”
+After 4.5 hours:
+“But I also understand why an AI prediction can be wrong.”
+At the end:
+“I don't need to become an AI specialist, but I need enough AI/data literacy to work effectively with these technologies as a future geologist or geophysicist.”
+That is the educational outcome I would target.
+Phase 2 should now be substantially deeper
+For the next phase, I would not jump directly into slides.
+I would build a detailed teaching blueprint for each module containing:
+exact learning objectives 
+prerequisite knowledge 
+concepts introduced 
+geological examples 
+terminology 
+explanations for beginners 
+analogies 
+mathematical concepts 
+statistics concepts 
+ML algorithms and why each is selected 
+demonstrations 
+datasets required 
+student activities 
+questions to ask the class 
+expected student answers 
+common misconceptions 
+transitions between sections 
+estimated time for each individual teaching segment 
+what should appear visually 
+what should be explained verbally 
+what should not be explained 
+lecturer notes 
+difficulty level 
+Then, only after that blueprint is solid, we can turn it into the complete slide-by-slide presentation.
+4. Module 2 — Exploration Data: The Raw Material of AI
+Duration: 45 minutes
+This is an extremely important module.
+Students should understand:
+Machine learning doesn't start with an algorithm. It starts with data.
+Learning objectives
+Students should recognize the major exploration datasets and understand:
+variables/features 
+observations 
+labels 
+spatial coordinates 
+missing values 
+data quality 
+sampling 
+measurement error 
+categorical vs numerical data 
+spatial relationships 
+Exploration data ecosystem
+Build a visual map:
+                    MINERAL EXPLORATION DATA
+                             │
+       ┌─────────────┬───────┼────────┬─────────────┐
+       ↓             ↓       ↓        ↓             ↓
+   Geology       Geochem  Geophysics  Drilling   Remote Sensing
+       │             │       │        │             │
+   Lithology      Au      Magnetics  Assays      Satellite
+   Structure      Cu      Gravity    Intervals    Hyperspectral
+   Alteration     As      IP         Recovery     DEM
+   Mineralisation Zn      EM         RQD
+       │             │       │        │
+       └─────────────┴───────┴────────┴─────────────┘
+                             ↓
+                         DATABASE
+                             ↓
+                       DATA ANALYSIS
+                             ↓
+                           AI / ML
+Important geological concept: spatial data
+This deserves special emphasis.
+Two samples with identical chemistry can mean completely different things depending on:
+location 
+geological unit 
+structure 
+alteration 
+depth 
+relationship to mineralisation 
+Therefore:
+Exploration data is not just a table. It has geological and spatial context.
+This becomes important later when discussing spatial bias and validation.
+Statistical foundations
+Only introduce the statistics students genuinely need.
+Concepts
+mean 
+median 
+distribution 
+variance 
+standard deviation 
+correlation 
+outliers 
+histograms 
+scatter plots 
+Then connect them directly to exploration.
+Example:
+Gold concentration
+Show a strongly skewed distribution and ask:
+“What does the average gold grade tell us?”
+Then discuss:
+skewness 
+anomalous populations 
+transformations 
+thresholds 
+No need for a statistics lecture.
+Practical demonstration #1
+“Explore an exploration dataset”
+Use a small realistic dataset containing:
+X 
+Y 
+elevation 
+lithology 
+alteration 
+Au 
+Cu 
+magnetic response 
+Demonstrate:
+Load data 
+Inspect it 
+Plot distributions 
+Plot spatial locations 
+Identify anomalies 
+Examine relationships 
+The students see that data visualization itself is already an exploration tool.
+Module | Time | Main question
+1. Mineral Exploration in the Age of AI | 40 min | Why does AI matter to geologists?
+2. From Rocks to Data: How Exploration Becomes Data | 55 min | What does AI actually learn from?
+Break | 15 min | 
+3. AI & Machine Learning Without the Jargon | 60 min | What is ML actually doing?
+4. A Complete AI-Assisted Exploration Workflow | 60 min | How does AI solve a real exploration problem?
+Break | 15 min | 
+5. AI Across the Exploration Workflow | 40 min | Where can AI be useful?
+6. Can We Trust AI? + Future Geologist | 30 min | When should a geologist trust/question AI?
+Total | 300 min | 
+From geology | To data
+Lithology | categorical variable
+Au assay | numerical variable
+Depth | numerical variable
+Alteration | categorical/encoded variable
+Magnetic susceptibility | numerical variable
+Structure | orientation/numerical or categorical
+Core photo | image/pixels
+Location | coordinates
+Geological map | spatial raster/vector data

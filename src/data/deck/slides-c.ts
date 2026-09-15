@@ -184,6 +184,37 @@ export const slidesC: Slide[] = [
     },
   },
   {
+    id: "m8-ai-workflow",
+    module: 8,
+    layout: "steps",
+    kicker: "08 · A professional workflow",
+    title: "Draft → verify → cite → review",
+    lead: "Treat generative AI as a fast junior assistant, not an authority. The value comes from the checking workflow around the answer.",
+    steps: [
+      {
+        title: "1. Draft with a bounded task",
+        text: "Ask for a table cleanup, a first-pass Python function, or a plain-language summary. State the units, audience and output format. Never paste confidential assays, coordinates or unpublished targets into a public tool.",
+        accent: "slate",
+      },
+      {
+        title: "2. Verify against primary evidence",
+        text: "Open the original report, dataset or paper. Check every number, coordinate, reference, assumption and unit. A fluent answer is not evidence and a citation is not proof that the cited source says what the tool claims.",
+        accent: "ochre",
+      },
+      {
+        title: "3. Cite what survives",
+        text: "Record the source, page or row, date accessed, transformation and tool involvement. Keep generated text separate from your geological interpretation so another person can reproduce the chain.",
+        accent: "moss",
+      },
+      {
+        title: "4. Human review and escalation",
+        text: "A competent geologist reviews anything that affects targeting, safety, resource reporting, regulatory work or external communication. If uncertainty remains, stop, ask for the missing evidence and escalate the decision.",
+        accent: "oxy",
+      },
+    ],
+    note: "The professional question is not 'Did AI write this?' It is 'Can I show the evidence, checks and accountable human judgement behind it?'",
+  },
+  {
     id: "m8-skills",
     module: 8,
     layout: "steps",

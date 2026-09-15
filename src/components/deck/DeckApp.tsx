@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { ChevronLeft, ChevronRight, Grid2X2, List, Menu, Minimize, Presentation } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Grid2X2, List, Menu, Minimize, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -101,6 +101,10 @@ export function DeckApp({ initialSlide = 0, print = false }: { initialSlide?: nu
           </div>
           <div className="hidden min-w-0 flex-1 items-center gap-3 px-8 md:flex"><span className="truncate text-xs text-inksoft">{current.title}</span><div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line"><div className="h-full bg-oxy transition-[width]" style={{ width: `${((index + 1) / slides.length) * 100}%` }} /></div><span className="font-mono text-xs text-inksoft">{index + 1}/{slides.length}</span></div>
           <div className="flex items-center gap-1">
+            <a href="https://shehata-mekawy-portfolio.vercel.app/" target="_blank" rel="noreferrer" aria-label="Open Shehata Mekawy portfolio" className="flex items-center gap-2 rounded-md px-2 py-2 text-xs text-inksoft transition-colors hover:bg-paper hover:text-ink">
+              <ExternalLink className="size-4" />
+              <span className="hidden sm:inline">Shehata Mekawy</span>
+            </a>
             <TopButton label="Overview (G)" onClick={() => setOverview(true)} icon={<Grid2X2 />} />
             <TopButton label={fullscreen ? "Exit fullscreen" : "Present (F5)"} onClick={() => void toggleFullscreen()} icon={fullscreen ? <Minimize /> : <Presentation />} />
             <span className="mx-2 h-6 w-px bg-line" />
