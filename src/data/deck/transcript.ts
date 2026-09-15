@@ -337,7 +337,9 @@ function transitionFor(slide: Slide, index: number): string {
   if (!sameModule) {
     return `You are leaving module ${modules.find((m) => m.index === slide.module)?.code ?? ""} and entering ${nextModule?.code ?? ""} — ${nextModule?.title ?? ""}. Say what has been settled so far in one sentence, then set up the next module as the question that follows from it: "${nextModule?.subtitle ?? next.title}". If you are behind time, this is a safe place to shorten.`;
   }
-  return `Bridge to "${next.title}": name the gap this slide leaves open, then say the next slide answers it. A usable line is: "So we know ${slide.takeaway ? slide.takeaway.replace(/\.$/, "").toLowerCase() : slide.title.toLowerCase()} — the next question is ${next.title.toLowerCase()}."`;
+  const settled = (slide.takeaway ?? slide.title).split(/(?<=[.!?])\s/)[0]!.replace(/[.!?]$/, "");
+  const settledPhrase = `${settled.charAt(0).toLowerCase()}${settled.slice(1)}`;
+  return `Bridge to "${next.title}": name the gap this slide leaves open, then say the next slide answers it. A usable line is: "So we know ${settledPhrase} — the next question is ${next.title.toLowerCase()}."`;
 }
 
 export function buildTranscript(): SlideTranscript[] {
