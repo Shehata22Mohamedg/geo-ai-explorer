@@ -232,6 +232,11 @@
   }
 }
 
+@keyframes workflowCurrent {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--ochre) 45%, transparent); }
+  50% { box-shadow: 0 0 0 14px color-mix(in oklch, var(--ochre) 0%, transparent); }
+}
+
 @utility stage-in {
   animation: stageIn 0.45s cubic-bezier(0.32, 0.72, 0, 1) both;
 }
@@ -248,3 +253,6 @@
   stroke-dasharray: 1000;
   animation: drawLine 1.6s ease forwards;
 }
+
+.workflow-progress { transition: width 700ms cubic-bezier(0.32, 0.72, 0, 1); }
+.workflow-current { animation: workflowCurrent 1.8s ease-in-out infinite; }

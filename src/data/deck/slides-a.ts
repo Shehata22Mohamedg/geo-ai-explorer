@@ -11,8 +11,8 @@ export const slidesA: Slide[] = [
     title: "A Geologist's Guide to AI & Machine Learning in Mineral Exploration",
     lead: "No coding required. No maths derivations. By the end of today you will not be able to build a model — you will be able to interrogate one.",
     stats: [
-      { value: "9", label: "modules" },
-      { value: "14", label: "live demos" },
+      { value: "9+1", label: "live modules + reference" },
+      { value: "25", label: "interactive demos" },
       { value: "300", label: "minutes" },
     ],
     note: "Everything today is anchored in geology first. The AI vocabulary arrives only after the geological idea it describes.",

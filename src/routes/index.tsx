@@ -9,10 +9,10 @@ export const Route = createFileRoute("/")({
   }),
   head: () => ({
     meta: [
-      { title: "AI & ML in Mineral Exploration Workshop" },
-      { name: "description", content: "An interactive five-hour workshop for geology and geophysics students on practical AI and machine learning in mineral exploration." },
+      { title: "AI in Mineral Exploration Workshop & Guide" },
+      { name: "description", content: "A five-hour interactive AI and machine learning workshop with practical animated workflows for geology and geophysics beginners." },
       { property: "og:title", content: "A Geologist's Guide to AI & Machine Learning" },
-      { property: "og:description", content: "Interactive mineral exploration workshop covering data, modelling, targeting, validation, and practical AI tools." },
+      { property: "og:description", content: "Interactive mineral exploration workshop and beginner reference covering data, modelling, targeting, validation, and practical AI workflows." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
