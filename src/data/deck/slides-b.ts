@@ -398,6 +398,43 @@ export const slidesB: Slide[] = [
     note: "Reporting codes (JORC, NI 43-101, PERC) require a Competent Person to take responsibility. No model signs a technical report — a named human does.",
   },
   {
+    id: "m5-governance",
+    module: 5,
+    layout: "cards",
+    kicker: "05 · How modern exploration teams actually work",
+    title: "The plumbing behind every AI result: data governance",
+    lead: "The companies getting value from AI are not the ones with the cleverest algorithms. They are the ones whose data can be found, trusted, reproduced and legally used.",
+    cards: [
+      {
+        tag: "Single source of truth",
+        title: "One database, not forty spreadsheets",
+        text: "A validated drill and sample database with enforced codes and units. Every model, plot and report reads from it. Exports are disposable; the database is the asset.",
+        accent: "moss",
+      },
+      {
+        tag: "Lineage",
+        title: "Every number traceable back to a sample",
+        text: "Lab batch, method, detection limit, date, who touched it, which transform was applied. Without lineage you cannot defend a result or repeat it in two years.",
+        accent: "slate",
+      },
+      {
+        tag: "Reproducibility",
+        title: "Scripts and version control, not manual clicks",
+        text: "A notebook plus a recorded data version reproduces the map exactly. 'I re-did the steps in Excel and got a slightly different answer' is not a professional position.",
+        accent: "ochre",
+      },
+      {
+        tag: "Permission & confidentiality",
+        title: "What you are allowed to use, and where",
+        text: "Unpublished assays, tenure and heritage information carry disclosure, licensing and Indigenous data obligations. Pasting them into a public AI tool is a disclosure event, not a shortcut.",
+        accent: "oxy",
+      },
+    ],
+    takeaway:
+      "A graduate who can build and document a trustworthy project database is more employable than one who can name ten algorithms. This is the least glamorous, most bankable skill in the room.",
+  },
+
+  {
     id: "m5-target",
     module: 5,
     layout: "steps",
