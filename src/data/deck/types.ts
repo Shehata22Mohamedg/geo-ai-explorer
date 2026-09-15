@@ -54,6 +54,23 @@ export type Workflow = {
   steps: WorkflowStep[];
 };
 
+export type DiagramNode = {
+  title: string;
+  text: string;
+  accent: AccentKey;
+};
+
+export type DiagramLane = {
+  label: string;
+  nodes: DiagramNode[];
+};
+
+export type Diagram = {
+  intro: string;
+  lanes: DiagramLane[];
+  feedback: string;
+};
+
 export type Slide = {
   id: string;
   module: number;
@@ -66,6 +83,7 @@ export type Slide = {
     | "table"
     | "compare"
     | "widget"
+    | "diagram"
     | "quote";
   title: string;
   kicker?: string;
@@ -92,6 +110,7 @@ export type Slide = {
   vocab?: { term: string; meaning: string }[];
   activityLabel?: string;
   workflow?: Workflow;
+  diagram?: Diagram;
 };
 
 export type Module = {
