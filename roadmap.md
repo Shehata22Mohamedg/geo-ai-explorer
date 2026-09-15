@@ -9,7 +9,7 @@
 
 # Beginner reference expansion
 
-- [ ] Add optional reference module without changing the five-hour workshop
-- [ ] Add beginner decision guides and ten animated workflows
-- [ ] Expand the glossary and presentation counts
+- [x] Add optional reference module without changing the five-hour workshop
+- [x] Add beginner decision guides and ten animated workflows
+- [x] Expand the glossary and presentation counts
 - [ ] Validate animations, navigation, print, and responsive layouts
