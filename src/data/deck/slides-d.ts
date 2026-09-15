@@ -219,7 +219,7 @@ const moduleSlides = entries.flatMap((entry, i): Slide[] => {
       lead: entry.lead,
       objectives: [
         `Answer: ${entry.workflow.question}`,
-        `Move through ${steps.length} gates, from ${steps[0]?.phase.toLowerCase()} to ${steps[steps.length - 1]?.phase.toLowerCase()}`,
+        `Work through ${steps.length} gates: ${steps.map((step) => step.phase).join(" → ")}`,
         `Deliver: ${entry.workflow.decision}`,
       ],
     },
