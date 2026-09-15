@@ -91,6 +91,16 @@ export const modules: Module[] = [
     accent: "moss",
     act: "Act IV — Judgement",
   },
+  {
+    index: 9,
+    code: "09",
+    title: "Reference Workflows",
+    subtitle: "Optional animated field manual for independent study and project work",
+    time: "Optional · self-study",
+    minutes: 0,
+    accent: "slate",
+    act: "Reference — After the Workshop",
+  },
 ];
 
 export const breaks = [

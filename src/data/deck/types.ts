@@ -16,6 +16,7 @@ export type WidgetKey =
   | "bias-spotter"
   | "workflow-chain"
   | "core-logging-cv"
+  | "animated-workflow"
   | "glossary";
 
 export type AccentKey = "oxy" | "ochre" | "moss" | "slate";
@@ -37,6 +38,21 @@ export type Figure = {
 
 export type QuizOption = { text: string; correct?: boolean; why?: string };
 export type QuizQuestion = { prompt: string; options: QuizOption[] };
+
+export type WorkflowStep = {
+  phase: string;
+  title: string;
+  detail: string;
+  check: string;
+  output: string;
+  accent: AccentKey;
+};
+
+export type Workflow = {
+  question: string;
+  decision: string;
+  steps: WorkflowStep[];
+};
 
 export type Slide = {
   id: string;
@@ -75,6 +91,7 @@ export type Slide = {
   objectives?: string[];
   vocab?: { term: string; meaning: string }[];
   activityLabel?: string;
+  workflow?: Workflow;
 };
 
 export type Module = {

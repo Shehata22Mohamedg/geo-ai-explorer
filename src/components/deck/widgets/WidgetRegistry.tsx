@@ -1,6 +1,7 @@
 import type { Slide } from "@/data/deck/types";
 import { PollWidget, QuizWidget, MlVsRulesWidget, DataShapesWidget, CleanDataWidget, FeatureBuilderWidget } from "./BasicWidgets";
 import { AnomalyScatterWidget, BiasSpotterWidget, ConfusionWidget, CoreLoggingWidget, DecisionTreeWidget, FeatureImportanceWidget, GlossaryWidget, KMeansWidget, OverfitWidget, RankTargetsWidget, WorkflowChainWidget } from "./AdvancedWidgets";
+import { AnimatedWorkflowWidget } from "./AnimatedWorkflowWidget";
 
 export function WidgetRegistry({ slide }: { slide: Slide }) {
   switch (slide.widget) {
@@ -18,6 +19,7 @@ export function WidgetRegistry({ slide }: { slide: Slide }) {
     case "feature-importance": return <FeatureImportanceWidget />;
     case "workflow-chain": return <WorkflowChainWidget />;
     case "core-logging-cv": return <CoreLoggingWidget />;
+    case "animated-workflow": return <AnimatedWorkflowWidget workflow={slide.workflow} />;
     case "rank-targets": return <RankTargetsWidget />;
     case "bias-spotter": return <BiasSpotterWidget />;
     case "glossary": return <GlossaryWidget />;
