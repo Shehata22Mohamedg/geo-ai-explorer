@@ -522,10 +522,12 @@ export const slidesA: Slide[] = [
     title: "From Field to Feature",
     lead: "The unglamorous 80% of any real AI project in exploration is not the algorithm. It is getting six messy tables into one a model can actually read.",
     objectives: [
+      "Frame an AI project as one testable geological decision on a single page",
       "Describe the pipeline from raw field data to a model-ready table",
       "Define a 'feature' and engineer one from geological reasoning",
       "Recognise sampling bias and spatial data leakage in a real dataset",
     ],
+
   },
   {
     id: "m3-brief",
