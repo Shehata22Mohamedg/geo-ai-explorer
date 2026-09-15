@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { DeckApp } from "@/components/deck/DeckApp";
+import { GuideExport } from "@/components/deck/GuideExport";
 
 export const Route = createFileRoute("/")({
   validateSearch: z.object({
     slide: z.coerce.number().int().positive().optional().catch(undefined),
     print: z.string().optional().catch(undefined),
+    guide: z.string().optional().catch(undefined),
+    auto: z.string().optional().catch(undefined),
   }),
   head: () => ({
     meta: [
@@ -22,5 +25,6 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const search = Route.useSearch();
+  if (search.guide !== undefined) return <GuideExport auto={search.auto !== undefined} />;
   return <DeckApp initialSlide={(search.slide ?? 1) - 1} print={search.print !== undefined} />;
 }
