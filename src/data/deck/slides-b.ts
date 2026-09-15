@@ -433,7 +433,41 @@ export const slidesB: Slide[] = [
     takeaway:
       "A graduate who can build and document a trustworthy project database is more employable than one who can name ten algorithms. This is the least glamorous, most bankable skill in the room.",
   },
-
+  {
+    id: "m5-industry",
+    module: 5,
+    layout: "cards",
+    kicker: "05 · Not just theory",
+    title: "Who is actually doing this, today",
+    lead: "Four real, publicly documented examples — so you can separate what is genuinely deployed from what is a conference slide.",
+    cards: [
+      {
+        tag: "KoBold Metals",
+        title: "ML-directed targeting, real drill result",
+        text: "A venture-backed explorer whose 'Terrain' platform integrates geological, geophysical and geochemical layers with machine learning to rank targets. Its Mingomba copper discovery in Zambia followed AI-assisted target generation — but the discovery hole was still a geologist's decision.",
+        accent: "oxy",
+      },
+      {
+        tag: "Earth AI",
+        title: "Australian junior, AI-selected drill sites",
+        text: "Publishes drill results directly against its own AI-ranked targets across multiple commodities — a rare case where the model's pick and the outcome are both public and checkable.",
+        accent: "moss",
+      },
+      {
+        tag: "Government open-data programmes",
+        title: "The prospectivity layers everyone builds on",
+        text: "National surveys (Geoscience Australia's 'Exploring for the Future', the USGS, and equivalents elsewhere) publish continent-scale magnetics, gravity and geochemistry, plus their own ML-assisted mineral potential maps that companies then refine locally.",
+        accent: "slate",
+      },
+      {
+        tag: "Major-company data science teams",
+        title: "Internal, unglamorous, and where most graduates land",
+        text: "BHP, Rio Tinto, Newmont and peers run in-house geoscience data teams focused on core-scanning automation, geophysical inversion speed-ups and drill-database governance — the plumbing work from the last slide, not headline-grabbing 'AI discoveries'.",
+        accent: "ochre",
+      },
+    ],
+    note: "None of these replaced a geologist. Every public case study still names a human who owned the targeting decision and signed off the drill programme.",
+  },
   {
     id: "m5-target",
     module: 5,

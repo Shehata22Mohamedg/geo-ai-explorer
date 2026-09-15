@@ -187,6 +187,8 @@ export const slidesC: Slide[] = [
         ["Data science", "Python, pandas, scikit-learn, Jupyter", "Read and interpret a notebook; run someone else's with confidence"],
         ["Prospectivity platforms", "ArcSDM, WofE toolkits, in-house ML stacks", "That knowledge-driven and data-driven approaches suit different maturity"],
         ["Generative AI assistants", "ChatGPT, Claude, Copilot", "Excellent for code, summaries and literature; never a source of geological fact"],
+        ["Cloud & MLOps", "Databricks, AWS/Azure/GCP ML, MLflow", "Where a company's models actually run in production; you will not build this, but you may feed it"],
+        ["Reproducibility & version control", "Git, GitHub/GitLab, DVC", "The habit that turns 'I re-ran it and got a different map' into a solved problem"],
       ],
     },
     note: "Databases matter more than algorithms in practice. A project with a clean, documented, version-controlled database is already ahead of most of the industry.",
@@ -320,6 +322,18 @@ export const slidesC: Slide[] = [
         text: "Resource classification, reporting codes, audit trails. As models spread, the demand for people who can sign off on them grows.",
         accent: "moss",
       },
+      {
+        tag: "Data / MLOps engineer",
+        title: "Keeps the pipeline honest and running",
+        text: "Builds the automated ingestion, validation and retraining pipelines behind a production prospectivity or core-vision tool. Geology fluency is what separates a good one from a generic data engineer.",
+        accent: "ochre",
+      },
+      {
+        tag: "Remote sensing / spectral geologist",
+        title: "Owns the satellite-to-ground-truth loop",
+        text: "Runs the hyperspectral and multispectral pipelines, then designs the field campaigns that keep the alteration maps honest. High demand as constellations get cheaper.",
+        accent: "oxy",
+      },
     ],
   },
   {
@@ -333,7 +347,7 @@ export const slidesC: Slide[] = [
       {
         label: "01",
         title: "Download a real public dataset",
-        text: "Your national geological survey publishes drill holes, geochemistry and geophysical grids for free. Open one in QGIS and make a map of something.",
+        text: "Geoscience Australia, the USGS Mineral Resources Data System, Natural Resources Canada or your national survey publish drill holes, geochemistry and geophysical grids for free. Open one in QGIS and make a map of something.",
       },
       {
         label: "02",

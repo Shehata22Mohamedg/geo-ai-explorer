@@ -373,7 +373,7 @@ export const slidesA: Slide[] = [
         ["Surface geological map", "Spatial (polygons)", "1:100k – 1:25k", "Interpretation, not measurement — and it has an author"],
         ["Soil / stream geochemistry", "Tabular + spatial", "10³–10⁵ samples × 50 elements", "Multiple labs, changed detection limits, no re-assays"],
         ["Airborne magnetics / radiometrics", "Raster grid", "10⁶–10⁸ cells", "Different survey heights and line spacings stitched together"],
-        ["Drill collars + downhole surveys", "Tabular + 3D", 	"10²–10⁴ holes", "Wrong collar coordinates, missing dip/azimuth, legacy datums"],
+        ["Drill collars + downhole surveys", "Tabular + 3D", "10²–10⁴ holes", "Wrong collar coordinates, missing dip/azimuth, legacy datums"],
         ["Assay intervals", "Tabular", "10⁴–10⁶ intervals", "Below-detection values coded as 0, −1, blank or 'ND'"],
         ["Geological logs", "Text + coded", "10⁴–10⁵ intervals", "Free-text vocabulary that differs per logger and per year"],
         ["Core photography / scans", "Image", "10³–10⁶ images", "Wet vs dry, inconsistent lighting, missing scale card"],
