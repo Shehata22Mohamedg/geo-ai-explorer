@@ -270,7 +270,7 @@ export const slidesD: Slide[] = [
     objectives: [
       "Follow a geological question from raw evidence to a documented decision",
       "Know exactly where human validation belongs in every AI-assisted workflow",
-      "Reuse ten practical workflows without needing to become a programmer first",
+      "Work through eleven reference modules, each with a diagram, animation and checklist",
     ],
   },
   {
@@ -316,8 +316,8 @@ export const slidesD: Slide[] = [
     title: "Eleven reference modules, each with its own diagram",
     lead: "Every module opens with objectives, then a workflow diagram, an animated walkthrough and a reusable checklist.",
     table: {
-      head: ["Module", "Workflow", "Geological question it answers"],
-      rows: entries.map((entry) => [entry.code, entry.title, entry.workflow.question]),
+      head: ["Module", "Workflow", "First gate"],
+      rows: entries.map((entry) => [entry.code, entry.title, entry.workflow.steps[0]?.phase ?? ""]),
     },
   },
   ...moduleSlides,
