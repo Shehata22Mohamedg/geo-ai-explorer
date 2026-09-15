@@ -11,11 +11,12 @@ export const slidesA: Slide[] = [
     title: "A Geologist's Guide to AI & Machine Learning in Mineral Exploration",
     lead: "No coding required. No maths derivations. By the end of today you will not be able to build a model — you will be able to interrogate one.",
     stats: [
-      { value: "9+12", label: "live modules + reference" },
-      { value: "11", label: "animated workflows" },
-      { value: "300", label: "minutes" },
+      { value: "9", label: "timed modules · 4 acts" },
+      { value: "25", label: "live demonstrations" },
+      { value: "12", label: "reference modules to take home" },
     ],
-    note: "Everything today is anchored in geology first. The AI vocabulary arrives only after the geological idea it describes.",
+    note: "Everything today is anchored in geology first. The AI vocabulary arrives only after the geological idea it describes. Ask questions the moment a word goes past undefined.",
+
   },
   {
     id: "about-shehata",
@@ -69,9 +70,11 @@ export const slidesA: Slide[] = [
         ["III", "06 · Case study: Solstice", "30 min", "Can you out-target the model?"],
         ["IV", "07 · Where AI fails", "15 min", "When should you refuse the answer?"],
         ["IV", "08 · Tools & careers", "10 min", "What do I do on Monday?"],
+        ["Ref", "09 + R01–R11 · Reference library", "self-study", "How do I run one of these workflows myself?"],
       ],
     },
-    note: "Ground rule: there is no basic question. If a term goes past unexplained, stop me.",
+    note: "The reference library at the end is not part of the five hours. It is the manual you open next month when you actually have a dataset in front of you.",
+
   },
   {
     id: "poll",
@@ -269,23 +272,36 @@ export const slidesA: Slide[] = [
     module: 1,
     layout: "cards",
     kicker: "01 · Generative AI",
-    title: "Types within generative AI & language models",
-    lead: "LLMs are not one thing either. Two shapes matter for exploration work today.",
+    title: "The four generative tools you will actually meet at work",
+    lead: "Generative AI is not one product. These four shapes appear in exploration offices today, and each has a different failure mode.",
     cards: [
       {
         tag: "Text LLMs",
         title: "Text-in, text-out",
-        text: "Reasoning, editing, and converting messy text into tables — turning a scanned 1987 assay letter into a clean spreadsheet row.",
+        text: "Reasoning, editing, writing code, and converting messy text into tables — turning a scanned 1987 assay letter into a clean spreadsheet row.",
         accent: "oxy",
       },
       {
         tag: "Multimodal models",
         title: "Text, image and audio together",
-        text: "Models that can read a core photo alongside its logging notes, or transcribe a field voice memo and file it against the right hole ID.",
+        text: "Reads a core photo alongside its logging notes, or transcribes a field voice memo and files it against the right hole ID.",
         accent: "moss",
       },
+      {
+        tag: "Embeddings + retrieval",
+        title: "Search by meaning across your archive",
+        text: "Every historical report converted to a numeric fingerprint, so 'skarn with retrograde alteration' finds the 1974 memo that never used those words. This — RAG — is where company value actually sits.",
+        accent: "ochre",
+      },
+      {
+        tag: "Agents / tool use",
+        title: "A model that calls software for you",
+        text: "It queries the drill database or runs a QGIS step instead of guessing the answer. Powerful, and the one to supervise most closely: it can act, not just talk.",
+        accent: "slate",
+      },
     ],
-    note: "ChatGPT is not a database query tool: it predicts text sequences statistically — it does not perform precise spatial calculations or deterministic database math.",
+    note: "An LLM predicts text sequences statistically. On its own it does not perform spatial calculations or deterministic database maths — when it appears to, a tool did the work behind it.",
+
   },
   {
     id: "m1-honest",
@@ -506,11 +522,57 @@ export const slidesA: Slide[] = [
     title: "From Field to Feature",
     lead: "The unglamorous 80% of any real AI project in exploration is not the algorithm. It is getting six messy tables into one a model can actually read.",
     objectives: [
+      "Frame an AI project as one testable geological decision on a single page",
       "Describe the pipeline from raw field data to a model-ready table",
       "Define a 'feature' and engineer one from geological reasoning",
       "Recognise sampling bias and spatial data leakage in a real dataset",
     ],
+
   },
+  {
+    id: "m3-brief",
+    module: 3,
+    layout: "steps",
+    kicker: "03 · Before any data · the page that saves the project",
+    title: "The one-page brief: turning an ambition into a testable question",
+    lead: "'Can we use AI on this project?' is not a question a model can answer. These six lines are what a geologist writes — and what a data scientist will ask you for on day one.",
+    steps: [
+      {
+        title: "1. The decision",
+        text: "Name the decision the result will change: which five targets get drilled first, which 200 core trays get re-logged, which soil grid gets infilled. No decision, no project.",
+        accent: "oxy",
+      },
+      {
+        title: "2. The unit of observation",
+        text: "One row equals what? A 100 × 100 m grid cell, a 2 m assay interval, a core photo, a whole hole. Every later argument about scale and support starts here.",
+        accent: "slate",
+      },
+      {
+        title: "3. The label, defined in geology",
+        text: "'Mineralised' means what exactly — > 0.2 % Cu over 10 m? Logged potassic alteration? Who decided, in which year, under which standard?",
+        accent: "ochre",
+      },
+      {
+        title: "4. The evidence you will allow",
+        text: "List the layers and why each one belongs to your mineral system model. Anything that only records exploration history — roads, tenement edges, survey year — is excluded now, in writing.",
+        accent: "moss",
+      },
+      {
+        title: "5. The validation design",
+        text: "Which ground is withheld, and why it is geologically independent. Decide this before you fit anything, or you will be tempted to change it once you see the score.",
+        accent: "oxy",
+      },
+      {
+        title: "6. The cost of each error",
+        text: "What a false positive costs (one hole, $400k) versus a false negative (a missed system). This ratio, not accuracy, sets the threshold — and only the geologist can supply it.",
+        accent: "slate",
+      },
+    ],
+    note: "Bring this page to your first meeting with a modeller and you will immediately be the most useful person in it. Most projects fail on lines 1 and 3, never on the algorithm.",
+    takeaway:
+      "AI projects in exploration are won or lost in the framing. The algorithm is the cheapest, most replaceable part of the whole exercise.",
+  },
+
   {
     id: "m3-pipeline",
     module: 3,

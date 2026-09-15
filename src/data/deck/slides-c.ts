@@ -112,6 +112,40 @@ export const slidesC: Slide[] = [
     note: "A fifth, softer question: what would have to be true for this to be wrong? If nobody on the team can answer, nobody has stress-tested it.",
   },
   {
+    id: "m7-communicate",
+    module: 7,
+    layout: "split",
+    kicker: "07 · The professional skill",
+    title: "How to present a model result — and how to refuse one",
+    lead: "You will be in the room where metres get committed. These are the four things to put on the slide, and the sentences that let you disagree without a fight.",
+    bullets: [
+      {
+        label: "01",
+        title: "Show the score next to the data density",
+        text: "Never a prediction map alone. Side by side: the score, and how much evidence exists at each cell. Low score under thick cover reads as 'untested', not 'barren'.",
+      },
+      {
+        label: "02",
+        title: "State the validation design in one sentence",
+        text: "'Whole prospects withheld; 0.71 on unseen ground' earns trust. A single number with no split described should worry the room, not impress it.",
+      },
+      {
+        label: "03",
+        title: "Give a ranking, plus what would change it",
+        text: "'B ahead of C on the magnetite-destruction signature; twenty infill soils on the same line would reverse that.' Decision-makers buy next steps, not certainty.",
+      },
+      {
+        label: "04",
+        title: "Refuse with evidence, not instinct",
+        text: "'I am not comfortable' loses. 'Its score rests on the 2008 soil batch whose standard drifted 18 %; re-assay fifty pulps and I will support it' wins, and costs the company nothing.",
+      },
+    ],
+    note: "Under JORC, NI 43-101 and PERC a named Competent Person carries the result, whatever produced it. Accountability cannot be delegated to software.",
+    takeaway:
+      "The most valuable person in an AI-assisted exploration team is not the one who builds the model. It is the one who can say precisely why the room should — or should not — spend money on it.",
+  },
+
+  {
     id: "m7-quote",
     module: 7,
     layout: "quote",
