@@ -13,3 +13,12 @@
 - [x] Add beginner decision guides and ten animated workflows
 - [x] Expand the glossary and presentation counts
 - [x] Validate animations, navigation, print, and responsive layouts
+
+# Expert review pass
+
+- [x] Correct opening counts and add the reference library to the day's arc
+- [x] Add the one-page project brief (framing before pipeline) to Module 03
+- [x] Expand generative AI to the four tools used at work (incl. retrieval and agents)
+- [x] Add data governance, lineage, reproducibility and confidentiality to Module 05
+- [x] Add presenting and refusing a model result to Module 07
+- [x] Replace the filler tiles on figure-less two-column slides
