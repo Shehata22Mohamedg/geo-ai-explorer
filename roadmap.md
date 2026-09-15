@@ -22,3 +22,10 @@
 - [x] Add data governance, lineage, reproducibility and confidentiality to Module 05
 - [x] Add presenting and refusing a model result to Module 07
 - [x] Replace the filler tiles on figure-less two-column slides
+
+# Full PDF instructor package
+
+- [x] Generate a presenter transcript for every slide from the slide content
+- [x] Printable package: cover, each slide, then its transcript page
+- [x] "Generate Full PDF" option in the presentation navigation
+- [x] Verify page layout, ordering and print-friendliness
