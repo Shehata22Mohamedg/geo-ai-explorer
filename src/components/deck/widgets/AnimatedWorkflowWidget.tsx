@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import type { Workflow } from "@/data/deck/types";
 import { accentBg, accentBorder, accentSoft, accentText, Chip, Kicker, Panel } from "../ui";
 
-export function AnimatedWorkflowWidget({ workflow }: { workflow?: Workflow }) {
+export function AnimatedWorkflowWidget({ workflow }: { workflow: Workflow | undefined }) {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(false);
   const steps = workflow?.steps ?? [];
