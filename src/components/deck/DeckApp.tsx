@@ -107,7 +107,7 @@ export function DeckApp({ initialSlide = 0, print = false }: { initialSlide?: nu
             </a>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2" aria-label="Generate full PDF with detailed student reference" onClick={() => window.open("/?guide=yes&auto=yes", "_blank", "noopener")}>
+                <Button variant="outline" size="sm" className="gap-2" aria-label="Generate full PDF with detailed student reference" onClick={() => window.open(`${import.meta.env.BASE_URL}?guide=yes&auto=yes`, "_blank", "noopener")}>
                   <FileDown className="size-4" />
                   <span className="hidden md:inline">Generate Full PDF</span>
                 </Button>
