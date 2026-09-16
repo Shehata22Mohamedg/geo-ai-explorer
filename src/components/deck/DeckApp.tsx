@@ -107,12 +107,12 @@ export function DeckApp({ initialSlide = 0, print = false }: { initialSlide?: nu
             </a>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2" aria-label="Generate full PDF with presenter transcript" onClick={() => window.open("/?guide=yes&auto=yes", "_blank", "noopener")}>
+                <Button variant="outline" size="sm" className="gap-2" aria-label="Generate full PDF with detailed student reference" onClick={() => window.open("/?guide=yes&auto=yes", "_blank", "noopener")}>
                   <FileDown className="size-4" />
                   <span className="hidden md:inline">Generate Full PDF</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>All {slides.length} slides plus a presenter transcript for each — opens your print dialog; choose “Save as PDF”.</TooltipContent>
+              <TooltipContent>All {slides.length} slides plus a detailed reference page for each — opens your print dialog; choose “Save as PDF”.</TooltipContent>
             </Tooltip>
             <TopButton label="Overview (G)" onClick={() => setOverview(true)} icon={<Grid2X2 />} />
             <TopButton label={fullscreen ? "Exit fullscreen" : "Present (F5)"} onClick={() => void toggleFullscreen()} icon={fullscreen ? <Minimize /> : <Presentation />} />

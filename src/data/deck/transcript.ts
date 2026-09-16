@@ -20,118 +20,118 @@ export type SlideTranscript = {
 
 const widgetGuide: Record<WidgetKey, { how: string; ask: string; watch: string }> = {
   poll: {
-    how: "Open the poll on screen and read each option aloud before anyone commits. Let the room vote by hand or on their own device, then reveal the spread and talk about why the answers differ rather than which one wins.",
-    ask: "Ask two students with opposite answers to defend their choice in one sentence each.",
-    watch: "Do not correct votes. The point is to expose the assumptions students walk in with so you can revisit them at the end of the day.",
+    how: "This live poll captures what you already believe before the ideas ahead are introduced formally. Look at the spread of answers across the group, not just the majority — the disagreement is the real starting point.",
+    ask: "Which answer would you have given, and what made you believe it before this module?",
+    watch: "No answer here is judged right or wrong. The point is to expose the assumptions you are walking in with, so you can revisit them once the material has been covered.",
   },
   quiz: {
-    how: "Read the question, give the room twenty seconds of silence, ask for a show of hands per option, then reveal the answer and read out the explanation for the distractors as well as the correct choice.",
-    ask: "Ask why the most popular wrong answer felt right — that reasoning is usually the real learning point.",
-    watch: "Never move on from a question that more than a third of the room got wrong; re-explain with a different example instead.",
+    how: "Each quiz question includes an explanation for the correct answer as well as for the tempting wrong ones. Read every explanation, even for options you already got right.",
+    ask: "Before checking the answer, ask yourself why the most tempting wrong option seems plausible.",
+    watch: "A question you get wrong is more useful than one you get right — treat it as a signal to re-read the surrounding material rather than move on.",
   },
   "ml-vs-rules": {
-    how: "Toggle between the rule-based path and the learned path with the same input data, narrating what a geologist wrote by hand versus what the model inferred from examples.",
-    ask: "Ask when a hand-written rule is the better professional choice — the answer is whenever the rule is known, stable and auditable.",
-    watch: "Emphasise that machine learning is not smarter, only better at finding combinations nobody wrote down.",
+    how: "This comparison places a hand-written rule and a learned model side by side on the same input data. The rule encodes something already known explicitly; the model instead infers a pattern from examples.",
+    ask: "When would a hand-written rule be the better professional choice over a learned model?",
+    watch: "Machine learning is not inherently smarter than a rule. It is only better at finding combinations of variables that nobody has written down yet.",
   },
   "data-shapes": {
-    how: "Click through each of the four data shapes and, for each, name a real dataset from the students' own coursework that has that shape.",
-    ask: "Ask the room to place a dataset they have used into one of the four shapes.",
-    watch: "Land the rule: the shape of the data, not fashion, decides the family of methods available.",
+    how: "Four data shapes are presented in turn — tabular, spatial, time-series and image/text — each constraining which methods are even applicable before any modelling choice is made.",
+    ask: "Which shape best matches a dataset you have used in your own coursework or fieldwork?",
+    watch: "The shape of a dataset, not fashion or hype, decides which family of methods can be applied to it.",
   },
   "clean-data": {
-    how: "Work through the dirty table live, fixing one issue at a time — units, detection limits, duplicate sample IDs, inconsistent lithology codes — and read the running data-quality score aloud.",
-    ask: "Ask which single fix changed the score most and why that field mattered.",
-    watch: "Make clear that every fix is a geological decision with a defensible reason, not a spreadsheet trick.",
+    how: "This walks through common data-quality problems one at a time — mismatched units, values below detection limit, duplicate sample IDs, inconsistent lithology codes — showing how each fix changes an overall data-quality score.",
+    ask: "Which single fix do you expect changed the score the most, and what geological reasoning justifies it?",
+    watch: "Every cleaning decision here is a geological judgement, not a spreadsheet trick — each one needs a defensible reason.",
   },
   "feature-builder": {
-    how: "Build features one at a time from raw assays and narrate the geology behind each: ratios as vectors, distance-to-structure as a control, alteration index as a proxy for the mineral system.",
-    ask: "Ask the room to propose one more feature and to justify it geologically before you add it.",
-    watch: "Reject any feature nobody can explain geologically, even if it improves the score — that is exactly the discipline you are teaching.",
+    how: "Features are built one at a time from raw assay values: ratios expressed as vectors, distance-to-structure as a geological control, an alteration index as a proxy for the mineral system.",
+    ask: "What additional feature would you propose here, and what geological reasoning would support it?",
+    watch: "A feature that improves a score but that nobody can explain geologically should be treated with suspicion, not celebrated.",
   },
   "decision-tree": {
-    how: "Grow the tree split by split, reading each split as a sentence a geologist would say out loud, then show what the tree predicts for a new sample.",
-    ask: "Ask whether the first split matches what they would have chosen as the strongest discriminator.",
-    watch: "Show a deep tree memorising noise so the link to overfitting is already visible before you name it.",
+    how: "The tree grows one split at a time. Each split can be read as a single yes/no question about one measured value, in the same way a dichotomous identification key works.",
+    ask: "Does the first split match the variable you would have chosen as the strongest discriminator?",
+    watch: "A tree grown too deep starts memorising noise in the training data rather than learning genuine structure — an early, visible sign of overfitting.",
   },
   overfit: {
-    how: "Slide model complexity from too simple to too complex, watching the training curve keep improving while the test curve turns around.",
-    ask: "Ask them to point at the complexity they would ship, and to say what evidence justifies that point.",
-    watch: "The gap between training and test performance is the single most useful honesty check they will use in their careers.",
+    how: "Sliding model complexity from simple to complex shows the training score keep improving indefinitely, while the test score improves and then turns worse.",
+    ask: "At what level of complexity would you stop, and what evidence justifies stopping there?",
+    watch: "The gap between training and test performance is the single most reliable overfitting check available — more useful than either score alone.",
   },
   kmeans: {
-    how: "Run clustering on the sample cloud, change the number of clusters, and show how the story changes with k.",
-    ask: "Ask what the clusters mean geologically — lithology, alteration, or an artefact of sampling density?",
-    watch: "Clustering has no right answer; it proposes domains that a geologist must accept or reject.",
+    how: "Clustering groups the sample cloud into a chosen number of groups, k. Changing k can change which groupings the algorithm proposes, sometimes substantially.",
+    ask: "Do the resulting clusters correspond to a real geological distinction — lithology, alteration — or could they be an artefact of where samples were collected?",
+    watch: "Clustering has no single correct answer. It proposes candidate domains; a geologist still has to accept or reject each one.",
   },
   "anomaly-scatter": {
-    how: "Move the anomaly threshold and watch flagged points appear. Separate genuine geochemical anomalies from contamination and analytical outliers.",
-    ask: "Ask which flagged points they would actually spend money following up.",
-    watch: "An anomaly is a statistical statement until a geologist gives it a mineral-system meaning.",
+    how: "Moving the anomaly threshold changes which points on the scatter plot are flagged, showing where the boundary between background and anomaly actually sits.",
+    ask: "Which flagged points would genuinely be worth following up in the field, and which look like contamination or analytical error?",
+    watch: "A statistical anomaly only becomes an exploration target once a geologist gives it a plausible mineral-system explanation.",
   },
   confusion: {
-    how: "Fill the confusion matrix cell by cell in exploration language: found deposits, missed deposits, wasted drill holes, correctly ignored ground.",
-    ask: "Ask which error is more expensive on their project — the answer changes the model they should choose.",
-    watch: "Accuracy is almost useless when mineralisation is rare; force the room to talk in false positives and false negatives.",
+    how: "The confusion matrix is filled in using exploration language: deposits found, deposits missed, holes drilled for nothing, and ground correctly left undrilled.",
+    ask: "Which of the two error types — a missed deposit or a wasted hole — is more costly on a project you know, and how would that change the model you would choose?",
+    watch: "Accuracy alone is close to meaningless when true deposits are rare in the dataset; false positives and false negatives matter far more.",
   },
   "threshold-map": {
-    how: "Sweep the probability threshold across the map and show the footprint of ground you would drill expanding and contracting.",
-    ask: "Ask the room to set the threshold for a ten-hole budget, then for a two-hole budget.",
-    watch: "The model does not choose the threshold. Budget, risk appetite and the cost of each error do.",
+    how: "Sweeping the probability threshold across the map changes the footprint of ground that would be selected for drilling, expanding or shrinking as the threshold moves.",
+    ask: "What threshold would you set for a ten-hole budget, and how would that change for a two-hole budget?",
+    watch: "The model never chooses the threshold by itself — budget, risk appetite and the cost of each error type decide it.",
   },
   "feature-importance": {
-    how: "Show which inputs drove the prediction and read the ranking as a geological hypothesis about the mineral system.",
-    ask: "Ask whether the top drivers make geological sense, and what it would mean if they did not.",
-    watch: "Importance is not causation, and a leaked variable often ranks first — that is a red flag, not a triumph.",
+    how: "The ranking shows which input variables drove the model's prediction, which can be read directly as a geological hypothesis about the mineral system.",
+    ask: "Do the top-ranked drivers make geological sense, and what would it mean if they did not?",
+    watch: "Importance is not the same as causation, and a variable that has leaked information from the answer often ranks highest — a warning sign, not a success.",
   },
   "rank-targets": {
-    how: "Rank the candidate targets by prospectivity, then re-rank by confidence and by drill feasibility so the order changes in front of the room.",
-    ask: "Ask which target they would drill first, and what single piece of new evidence would change their mind.",
-    watch: "Prospectivity, confidence and feasibility are three different axes; collapsing them into one number hides the real decision.",
+    how: "The same candidate targets are ranked three different ways in turn — by prospectivity, by confidence, and by drill feasibility — and the order changes each time.",
+    ask: "Which target would you drill first, and what single piece of new evidence would change your answer?",
+    watch: "Prospectivity, confidence and feasibility are three separate axes; collapsing them into a single number hides the real decision that has to be made.",
   },
   "bias-spotter": {
-    how: "Work through each scenario and let the room name the failure — sampling bias, spatial leakage, label bias, or false confidence — before you confirm it.",
-    ask: "Ask for a real example of the same failure from their own field or lab work.",
-    watch: "Name each failure precisely; a named failure is one they can catch again in industry.",
+    how: "Each scenario presents a plausible-looking result that contains one specific flaw — sampling bias, spatial leakage, label bias, or false confidence.",
+    ask: "Can you name a comparable failure from your own field or laboratory work?",
+    watch: "Naming a failure precisely is what makes it possible to catch again later in industry — a vague sense that something is wrong is not enough.",
   },
   "workflow-chain": {
-    how: "Assemble the end-to-end chain step by step and show what breaks downstream when an early step is skipped.",
-    ask: "Ask which step in the chain they expect to consume most of their time — then confirm it is data preparation.",
-    watch: "Every chain ends with a human decision and a validation gate, never with a model score.",
+    how: "The end-to-end workflow is assembled step by step, and skipping an early step visibly breaks something further down the chain.",
+    ask: "Which step in this chain do you expect will consume the most time in practice?",
+    watch: "Every workflow ends with a human decision and a validation gate — never with a model score by itself.",
   },
   "core-logging-cv": {
-    how: "Run the vision demo on core imagery, showing confident predictions, borderline predictions and outright failures side by side.",
-    ask: "Ask what the review queue should contain and who signs off on the log.",
-    watch: "Computer vision buys consistency and speed, not geological interpretation. The geologist still owns the log.",
+    how: "The computer-vision demo runs on real core imagery, showing confident correct predictions, borderline cases, and outright failures side by side.",
+    ask: "What should go into the human review queue, and who should sign off on the final log?",
+    watch: "Computer vision improves consistency and speed, not geological interpretation — the geologist still owns the final log.",
   },
   "animated-workflow": {
-    how: "Play the animated workflow once end to end without commentary, then step through it gate by gate, reading the human check and the deliverable for each stage.",
-    ask: "Ask at each gate: what would make you stop here rather than continue?",
-    watch: "The gates are the content. A student who remembers only the stage names has missed the point.",
+    how: "The animated workflow plays through gate by gate, each one paired with a human check and a deliverable that has to exist before the next gate can be passed.",
+    ask: "At which gate would you personally choose to stop rather than continue, and what evidence would make you do that?",
+    watch: "The gates themselves are the content here — the stage names alone are not the point.",
   },
   "ai-hierarchy": {
-    how: "Expand the nesting from artificial intelligence down to deep learning and generative models, dropping an exploration example into each layer.",
-    ask: "Ask where a decision-tree prospectivity model sits, and where a chatbot summarising reports sits.",
-    watch: "Students routinely use these words interchangeably; fix the vocabulary here and it holds for the rest of the day.",
+    how: "The nested diagram expands outward from artificial intelligence down to deep learning and generative models, with one exploration example placed at each layer.",
+    ask: "Where would a decision-tree prospectivity model sit in this hierarchy, and where would a chatbot summarising reports sit?",
+    watch: "These terms are often used interchangeably in casual conversation; keeping them distinct is worth the small extra effort.",
   },
   glossary: {
-    how: "Use the glossary as a lookup rather than a lecture: invite the room to call out any term from the day they are still unsure about and read the entry together.",
-    ask: "Ask each student to name one term they could now explain to a supervisor.",
-    watch: "Point out that the glossary travels with them in the exported PDF for later revision.",
+    how: "The glossary works as a lookup rather than a narrative — use it whenever a term earlier in the workshop was left undefined.",
+    ask: "Which term from this workshop could you now explain clearly to a supervisor?",
+    watch: "This glossary is included in full in the exported guide for later revision, so there is no need to memorise it in one sitting.",
   },
 };
 
 const layoutPurpose: Record<Slide["layout"], string> = {
-  title: "Open the workshop, set expectations and establish the geology-first contract for the day.",
-  divider: "Close the previous thread and state plainly what this module will deliver.",
-  split: "Carry one main idea supported by a small set of named points, anchored to a figure or numbers.",
-  cards: "Present parallel concepts of equal weight so students can compare them side by side.",
-  steps: "Show an ordered procedure students can repeat on their own project.",
-  table: "Give a reference comparison students will come back to in the exported guide.",
-  compare: "Force a contrast so the boundary between two ideas becomes explicit.",
-  widget: "Hand the idea to the room as a live demonstration rather than a claim from the front.",
-  diagram: "Show a full workflow at a glance before walking its stages.",
-  quote: "Slow the pace and let one idea land before moving on.",
+  title: "Opens the workshop, sets expectations, and establishes the geology-first approach for the day.",
+  divider: "Closes the previous topic and states plainly what this module will cover.",
+  split: "Develops one main idea, supported by a small set of named points, anchored to a figure or numbers.",
+  cards: "Presents parallel concepts of equal weight so they can be compared side by side.",
+  steps: "Shows an ordered procedure that can be repeated on a real project.",
+  table: "Gives a reference comparison to return to later.",
+  compare: "Draws an explicit contrast so the boundary between two ideas is clear.",
+  widget: "Turns the idea into a live, interactive demonstration rather than a static claim.",
+  diagram: "Shows a full workflow at a glance before its stages are examined individually.",
+  quote: "Slows the pace and lets one idea land before moving on.",
 };
 
 function sentence(text: string) {
@@ -158,13 +158,13 @@ function walkthroughFor(slide: Slide): { label: string; text: string }[] {
     slide.stats?.forEach((s) =>
       out.push({
         label: `${s.value} — ${s.label}`,
-        text: `Read the number aloud and say what it buys the student: ${sentence(s.label.toLowerCase())} Do not dwell; the numbers set scale, not content.`,
+        text: `This figure — ${s.value} — represents ${s.label.toLowerCase()}.`,
       }),
     );
     slide.objectives?.forEach((o, i) =>
       out.push({
         label: `Objective ${i + 1}`,
-        text: `Say: "By the end of this module you should be able to ${o.charAt(0).toLowerCase()}${o.slice(1)}." Come back to this objective when you close the module and ask the room whether you met it.`,
+        text: `By the end of this module, you should be able to ${o.charAt(0).toLowerCase()}${o.slice(1)}.`,
       }),
     );
   }
@@ -172,39 +172,39 @@ function walkthroughFor(slide: Slide): { label: string; text: string }[] {
   slide.bullets?.forEach((b, i) =>
     out.push({
       label: b.title ?? b.label ?? `Point ${i + 1}`,
-      text: `${sentence(b.text)} Put it in the students' language first, then in the industry term. If the room looks blank, ask one of them to restate it as something they would write in a field notebook.`,
+      text: sentence(b.text),
     }),
   );
 
-  slide.cards?.forEach((c, i) =>
+  slide.cards?.forEach((c) =>
     out.push({
       label: `${c.tag ? `${c.tag} · ` : ""}${c.title}`,
-      text: `${sentence(c.text)} Spend roughly ${i === 0 ? "a little longer here, since it frames the rest" : "half a minute"} and give one concrete exploration instance before moving to the next card.`,
+      text: sentence(c.text),
     }),
   );
 
   slide.steps?.forEach((s, i) =>
     out.push({
       label: `Step ${i + 1} — ${s.title}`,
-      text: `${sentence(s.text)} Say who does this in a real team, what it produces, and what happens downstream if it is skipped.`,
+      text: sentence(s.text),
     }),
   );
 
   if (slide.compare) {
     out.push({
       label: slide.compare.leftTitle,
-      text: `Read the left column as a set: ${slide.compare.left.map((l) => l.replace(/\.$/, "")).join("; ")}. Work down it without commentary, then pause before the other side.`,
+      text: `${slide.compare.left.map((l) => l.replace(/\.$/, "")).join("; ")}.`,
     });
     out.push({
       label: slide.compare.rightTitle,
-      text: `Now the right column: ${slide.compare.right.map((r) => r.replace(/\.$/, "")).join("; ")}. Ask the room to name the boundary between the two columns in their own words before you state it.`,
+      text: `${slide.compare.right.map((r) => r.replace(/\.$/, "")).join("; ")}. The boundary between the two columns is the concept to hold onto here.`,
     });
   }
 
   if (slide.table) {
     out.push({
-      label: "How to read the table",
-      text: `Columns are ${slide.table.head.join(", ")}. Do not read every cell. Read the header row, then walk two or three rows in full so the pattern is clear, and tell the room the rest is reference material in the exported guide.`,
+      label: "How to read this table",
+      text: `Columns are ${slide.table.head.join(", ")}. Treat it as reference material to return to rather than something to memorise in one pass.`,
     });
     slide.table.rows.slice(0, 3).forEach((row) =>
       out.push({
@@ -219,8 +219,8 @@ function walkthroughFor(slide: Slide): { label: string; text: string }[] {
 
   if (slide.diagram) {
     out.push({
-      label: "Frame the diagram",
-      text: `${sentence(slide.diagram.intro)} Trace the whole path left to right with your hand before saying anything about individual boxes.`,
+      label: "How to read this diagram",
+      text: `${sentence(slide.diagram.intro)} Trace the whole path left to right before focusing on any individual box.`,
     });
     slide.diagram.lanes.forEach((lane) =>
       out.push({
@@ -230,53 +230,53 @@ function walkthroughFor(slide: Slide): { label: string; text: string }[] {
     );
     out.push({
       label: "The feedback loop",
-      text: `${sentence(slide.diagram.feedback)} Stress that this loop is what separates an exploration workflow from a one-off model run.`,
+      text: `${sentence(slide.diagram.feedback)} This feedback loop is what separates a genuine exploration workflow from a one-off model run.`,
     });
   }
 
   if (slide.workflow) {
     out.push({
-      label: "State the decision",
-      text: `The question is: ${sentence(slide.workflow.question)} The decision it feeds is: ${sentence(slide.workflow.decision)} Say both before playing the animation, so students hear the geology before the machinery.`,
+      label: "The central question",
+      text: `${sentence(slide.workflow.question)} The decision it feeds is: ${sentence(slide.workflow.decision)}`,
     });
     slide.workflow.steps.forEach((s, i) =>
       out.push({
         label: `Gate ${i + 1} — ${s.phase}: ${s.title}`,
-        text: `${sentence(s.detail)} Human check: ${sentence(s.check)} Deliverable: ${sentence(s.output)}${i === 0 || i === (slide.workflow?.steps.length ?? 0) - 1 ? " Ask the room what would make them stop at this gate rather than continue." : ""}`,
+        text: `${sentence(s.detail)} Human check: ${sentence(s.check)} Deliverable: ${sentence(s.output)}`,
       }),
     );
   }
 
   if (slide.vocab?.length) {
     out.push({
-      label: "Vocabulary to define out loud",
+      label: "Key vocabulary",
       text: slide.vocab.map((v) => `${v.term} — ${v.meaning.replace(/\.$/, "")}`).join(" · "),
     });
   }
 
   if (slide.quote) {
     out.push({
-      label: "Deliver the quote",
-      text: `Read it slowly, then stay silent for three seconds. Say why it matters for their careers rather than paraphrasing it${slide.attribution ? `, and attribute it to ${slide.attribution}` : ""}.`,
+      label: "Why this quote matters",
+      text: `Consider why this idea matters for your career rather than only for an exam${slide.attribution ? ` — it comes from ${slide.attribution}` : ""}.`,
     });
   }
 
   if (slide.figure) {
     out.push({
-      label: "Work the figure",
-      text: `Caption: ${sentence(slide.figure.caption)} ${slide.figure.scale ? `Note the scale (${slide.figure.scale}) explicitly — students consistently misjudge the footprint. ` : ""}${slide.figure.pins?.length ? `Walk the annotations in order: ${slide.figure.pins.map((p) => `${p.label} (${p.text.replace(/\.$/, "")})`).join("; ")}.` : "Ask the room what they notice before you interpret it for them."}`,
+      label: "Reading the figure",
+      text: `Caption: ${sentence(slide.figure.caption)} ${slide.figure.scale ? `Note the scale (${slide.figure.scale}) explicitly — it is easy to misjudge the footprint. ` : ""}${slide.figure.pins?.length ? `Annotations, in order: ${slide.figure.pins.map((p) => `${p.label} (${p.text.replace(/\.$/, "")})`).join("; ")}.` : "Look for what stands out before reading any interpretation into it."}`,
     });
   }
 
   if (slide.widget) {
     const guide = widgetGuide[slide.widget];
-    if (guide) out.push({ label: "Run the demonstration", text: guide.how });
+    if (guide) out.push({ label: "Using this interactive demonstration", text: guide.how });
   }
 
   if (!out.length) {
     out.push({
-      label: "Deliver the single idea",
-      text: `${sentence(slide.lead ?? slide.title)} This slide carries one idea only — say it, give one exploration example, and move on rather than filling the time.`,
+      label: "The core idea",
+      text: sentence(slide.lead ?? slide.title),
     });
   }
 
@@ -285,12 +285,12 @@ function walkthroughFor(slide: Slide): { label: string; text: string }[] {
 
 function emphasiseFor(slide: Slide): string[] {
   const points: string[] = [];
-  if (slide.takeaway) points.push(`Say the takeaway in your own words and then read it verbatim: "${slide.takeaway}"`);
-  if (slide.note) points.push(`Field note worth stopping on: ${sentence(slide.note)}`);
+  if (slide.takeaway) points.push(sentence(slide.takeaway));
+  if (slide.note) points.push(`Field note: ${sentence(slide.note)}`);
   if (slide.widget && widgetGuide[slide.widget]) points.push(widgetGuide[slide.widget]!.watch);
-  if (slide.layout === "table") points.push("Resist reading the whole table aloud — it exists as reference, and reading it kills the pace of the module.");
-  if (slide.figure) points.push("Interpret the figure with geological vocabulary, not model vocabulary. Students should hear alteration, structure and grade before they hear features and scores.");
-  points.push("Close the loop back to geology: whatever the model produced, a geologist has to defend it with evidence a Competent Person would accept.");
+  if (slide.layout === "table") points.push("Treat this table as reference material to return to later rather than something to memorise in one pass.");
+  if (slide.figure) points.push("Describe what you see using geological vocabulary — alteration, structure, grade — before reaching for model vocabulary such as features or scores.");
+  points.push("Whatever a model produces, a geologist still has to defend it with evidence that would satisfy a Competent Person.");
   return points;
 }
 
@@ -305,25 +305,25 @@ function exampleFor(slide: Slide, index: number): string {
     "a district where a prospectivity model scored ground highest exactly where historical drilling was densest",
   ];
   const pick = pool[index % pool.length];
-  return `Bring in ${pick}. Tell it as a short story with a decision at the end — what was drilled, what was found, and what the team would do differently. Keep it under ninety seconds, and name the geological reasoning that made the difference rather than the algorithm. Tie it explicitly to "${mod?.title ?? "this module"}" so students see the concept in a real project rather than in the abstract.`;
+  return `Consider ${pick}. Think through what was drilled, what was found, and what the team would do differently with hindsight — the geological reasoning behind that decision matters more than any algorithm involved. This example connects directly to "${mod?.title ?? "this module"}".`;
 }
 
 function interactionFor(slide: Slide): string[] {
   const items: string[] = [];
-  if (slide.activityLabel) items.push(`This slide is flagged "${slide.activityLabel}" — run it as an activity, not a lecture. Give the instruction, give a time limit, and hold the room to it.`);
+  if (slide.activityLabel) items.push(`This section is marked "${slide.activityLabel}" — treat it as a hands-on exercise rather than passive reading.`);
   if (slide.widget && widgetGuide[slide.widget]) items.push(widgetGuide[slide.widget]!.ask);
   if (slide.quiz?.length) {
     slide.quiz.forEach((q, i) => {
       const correct = q.options.find((o) => o.correct);
       items.push(
-        `Question ${i + 1}: "${q.prompt}" Correct answer: ${correct?.text ?? "see slide"}.${correct?.why ? ` Explain why: ${sentence(correct.why)}` : ""} Also address the tempting wrong answers: ${q.options.filter((o) => !o.correct).map((o) => `${o.text}${o.why ? ` (${o.why.replace(/\.$/, "")})` : ""}`).join("; ")}.`,
+        `Question ${i + 1}: "${q.prompt}" Correct answer: ${correct?.text ?? "see slide"}.${correct?.why ? ` ${sentence(correct.why)}` : ""} It is worth understanding why the other options are wrong: ${q.options.filter((o) => !o.correct).map((o) => `${o.text}${o.why ? ` (${o.why.replace(/\.$/, "")})` : ""}`).join("; ")}.`,
       );
     });
   }
-  if (slide.objectives?.length) items.push("Ask the room to write the module objectives in their notebook; you will return to them at the module close.");
+  if (slide.objectives?.length) items.push("Before moving on, check that you could explain each objective above in your own words.");
   if (!items.length) {
     items.push(
-      `Cold-call one question: "If you had to explain '${slide.title}' to a field assistant with no AI background, what would you say?" Take one answer, improve it in a sentence, and move on. Keep it under sixty seconds so the module stays on time.`,
+      `Ask yourself: how would you explain "${slide.title}" to a field assistant with no AI background? If you cannot do it in one sentence, re-read the section above.`,
     );
   }
   return items;
@@ -331,15 +331,15 @@ function interactionFor(slide: Slide): string[] {
 
 function transitionFor(slide: Slide, index: number): string {
   const next = slides[index + 1];
-  if (!next) return "This is the last slide. Close by asking every student to name one thing they will try in the next two weeks, then point them at the reference library modules in this guide for self-study.";
+  if (!next) return "This is the final slide of the workshop. Decide on one thing from today to try within the next two weeks, and use the reference library modules in this guide for further self-study.";
   const sameModule = next.module === slide.module;
   const nextModule = modules.find((m) => m.index === next.module);
   if (!sameModule) {
-    return `You are leaving module ${modules.find((m) => m.index === slide.module)?.code ?? ""} and entering ${nextModule?.code ?? ""} — ${nextModule?.title ?? ""}. Say what has been settled so far in one sentence, then set up the next module as the question that follows from it: "${nextModule?.subtitle ?? next.title}". If you are behind time, this is a safe place to shorten.`;
+    return `This closes ${modules.find((m) => m.index === slide.module)?.code ?? ""} and moves into ${nextModule?.code ?? ""} — ${nextModule?.title ?? ""}. ${nextModule?.subtitle ?? next.title} is the question that follows naturally from what has just been covered.`;
   }
   const settled = (slide.takeaway ?? slide.title).split(/(?<=[.!?])\s/)[0]!.replace(/[.!?]$/, "");
   const settledPhrase = `${settled.charAt(0).toLowerCase()}${settled.slice(1)}`;
-  return `Bridge to "${next.title}": name the gap this slide leaves open, then say the next slide answers it. A usable line is: "So we know ${settledPhrase} — the next question is ${next.title.toLowerCase()}."`;
+  return `With ${settledPhrase} established, the next question is ${next.title.toLowerCase()}.`;
 }
 
 export function buildTranscript(): SlideTranscript[] {
@@ -354,7 +354,7 @@ export function buildTranscript(): SlideTranscript[] {
       act: mod?.act ?? "—",
       timing: timingFor(slide, index),
       purpose: layoutPurpose[slide.layout],
-      opening: `${slide.kicker ? `Context on screen: ${slide.kicker}. ` : ""}Open with the idea, not the label. A workable opening line: "${sentence(slide.lead ?? slide.title)}" Then say the slide title so students can find it later in the handout. ${slide.layout === "divider" ? "Read the objectives aloud; they are the contract for the next block." : "Keep your first sentence shorter than the slide title — students read faster than you speak."}`,
+      opening: `${slide.kicker ? `${slide.kicker}. ` : ""}${sentence(slide.lead ?? slide.title)}${slide.layout === "divider" ? " The objectives below define exactly what this module expects you to be able to do by its end." : ""}`,
       walkthrough: walkthroughFor(slide),
       emphasise: emphasiseFor(slide),
       example: exampleFor(slide, index),
@@ -363,3 +363,4 @@ export function buildTranscript(): SlideTranscript[] {
     };
   });
 }
+

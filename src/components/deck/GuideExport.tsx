@@ -17,19 +17,19 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
   return (
     <div className="print-deck bg-paper text-ink">
       <section className="print-slide flex flex-col justify-center px-32">
-        <p className="font-mono text-[22px] uppercase tracking-[0.14em] text-oxy">Instructor guide · complete package</p>
+        <p className="font-mono text-[22px] uppercase tracking-[0.14em] text-oxy">Student reference guide · complete package</p>
         <h1 className="mt-6 max-w-[1560px] font-slab text-[86px] font-semibold leading-[1.03]">
           A Geologist's Guide to AI &amp; Machine Learning in Mineral Exploration
         </h1>
         <p className="mt-8 max-w-[1450px] text-[34px] leading-[1.28] text-inksoft">
-          Every slide in delivery order, each followed by a full presenter transcript: what to say, how to
-          explain it to geology and geophysics students, what to emphasise, which examples to tell, the
-          questions and activities to run, and how to move to the next slide.
+          Every slide in delivery order, each followed by a detailed reference page: the concept explained in
+          full, worked examples, key points to remember, self-check questions, and how each idea connects to
+          the next.
         </p>
         <div className="mt-12 grid grid-cols-4 gap-6">
           {[
             { value: String(slides.length), label: "slides, original order" },
-            { value: String(slides.length), label: "presenter transcripts" },
+            { value: String(slides.length), label: "detailed reference pages" },
             { value: String(timed.length), label: "timed workshop modules" },
             { value: `${timed.reduce((sum, m) => sum + m.minutes, 0)} min`, label: "core delivery time" },
           ].map((s) => (
@@ -40,8 +40,8 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
           ))}
         </div>
         <p className="mt-14 max-w-[1450px] text-[26px] leading-[1.35] text-inksoft">
-          How to use this document: each slide page is followed by a page headed with the same slide number.
-          Deliver from the slide page and prepare from the transcript page. Timings assume the five-hour
+          How to use this document: each slide page is followed by a reference page headed with the same
+          slide number, explaining that slide's idea in more depth. Timings assume the five-hour workshop
           schedule; the reference-library modules are optional self-study material.
         </p>
       </section>
@@ -57,7 +57,7 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
               <header className="flex items-end justify-between gap-10 border-b-4 border-oxy pb-5">
                 <div className="min-w-0">
                   <p className="note-kicker font-mono text-oxy">
-                    Presenter transcript · Slide {String(t.slideNumber).padStart(3, "0")} of {slides.length}
+                    Reference · Slide {String(t.slideNumber).padStart(3, "0")} of {slides.length}
                   </p>
                   <h2 className="note-title mt-3 font-slab font-semibold">{t.slideTitle}</h2>
                   <p className="note-meta mt-2 text-inksoft">
@@ -71,13 +71,13 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
               </header>
 
               <div className="note-columns mt-7">
-                <Block title="Purpose of this slide">
+                <Block title="Why this matters">
                   <p>{t.purpose}</p>
                 </Block>
-                <Block title="How to open">
+                <Block title="Overview">
                   <p>{t.opening}</p>
                 </Block>
-                <Block title="Walk the content" flow>
+                <Block title="Explained in detail" flow>
                   <dl className="space-y-4">
                     {t.walkthrough.map((w, wi) => (
                       <div key={`${w.label}-${wi}`} className="note-item">
@@ -87,7 +87,7 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
                     ))}
                   </dl>
                 </Block>
-                <Block title="Emphasise">
+                <Block title="Key points to remember">
                   <ul className="space-y-3">
                     {t.emphasise.map((e, ei) => (
                       <li key={ei} className="note-item flex gap-3 text-inksoft">
@@ -97,10 +97,10 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
                     ))}
                   </ul>
                 </Block>
-                <Block title="Example to tell">
+                <Block title="Worked example">
                   <p>{t.example}</p>
                 </Block>
-                <Block title="Questions &amp; activities" flow>
+                <Block title="Check your understanding" flow>
                   <ol className="space-y-3">
                     {t.interaction.map((q, qi) => (
                       <li key={qi} className="note-item flex gap-3 text-inksoft">
@@ -110,12 +110,12 @@ export function GuideExport({ auto = false }: { auto?: boolean }) {
                     ))}
                   </ol>
                 </Block>
-                <Block title="Transition to the next slide">
+                <Block title="Where this leads">
                   <p>{t.transition}</p>
                 </Block>
               </div>
               <footer className="note-foot mt-8 flex justify-between border-t border-line pt-4 font-mono text-inksoft">
-                <span>Instructor guide — transcript for slide {t.slideNumber}</span>
+                <span>Student reference — slide {t.slideNumber}</span>
                 <span>{String(t.slideNumber).padStart(3, "0")} / {slides.length}</span>
               </footer>
             </section>
