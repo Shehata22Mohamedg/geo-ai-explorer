@@ -65,7 +65,7 @@ export const slidesA: Slide[] = [
         ["—", "Break 1", "15 min", "Coffee"],
         ["II", "03 · From field to feature", "35 min", "How does rock become a model-ready table?"],
         ["II", "04 · How ML actually works", "50 min", "What is the model really doing?"],
-        ["—", "Break 2", "15 min", "Stretch"],
+        ["—", "Break 2", "15 min", "Coffee"],
         ["III", "05 · AI across the value chain", "40 min", "Where is AI genuinely useful?"],
         ["III", "06 · Case study: Solstice", "30 min", "Can you out-target the model?"],
         ["IV", "07 · Where AI fails", "15 min", "When should you refuse the answer?"],

@@ -114,9 +114,9 @@ export function MlVsRulesWidget() {
           </div>
         }
       >
-        <table className="w-full text-[13px]">
+        <table className="w-full text-[15px]">
           <thead>
-            <tr className="border-b border-line text-left font-mono text-[10px] uppercase tracking-wider text-inksoft">
+            <tr className="border-b border-line text-left font-mono text-[11px] uppercase tracking-wider text-inksoft">
               <th className="py-2">Int.</th>
               <th className="py-2">Cu %</th>
               <th className="py-2">S %</th>
