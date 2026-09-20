@@ -81,7 +81,7 @@ const intervals = [
 export function MlVsRulesWidget() {
   const [mode, setMode] = useState<"rule" | "ml">("rule");
   const [ruleThreshold, setRuleThreshold] = useState(0.2);
-  const [modelThreshold, setModelThreshold] = useState(0.5);
+  const [modelThreshold, setModelThreshold] = useState(0.65);
   const [selected, setSelected] = useState("A");
   const predict = (i: (typeof intervals)[number]) =>
     mode === "rule"
