@@ -284,9 +284,9 @@ export function DataShapesWidget() {
               <span className="min-w-0">
                 <span className="flex items-center gap-2">
                   <span className="font-mono text-[11px] font-bold opacity-70">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-sm font-semibold">{sh.key}</span>
+                  <span className="text-base font-semibold">{sh.key}</span>
                 </span>
-                <span className={`mt-0.5 block text-[12px] leading-snug ${on ? "text-paper/70" : "text-inksoft"}`}>{sh.tagline}</span>
+                <span className={`mt-0.5 block text-[15px] leading-snug ${on ? "text-paper/70" : "text-inksoft"}`}>{sh.tagline}</span>
               </span>
             </button>
           );
@@ -296,23 +296,23 @@ export function DataShapesWidget() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg bg-card p-3 ring-1 ring-line">
             <Kicker>Examples in exploration</Kicker>
-            <p className="mt-1 text-[14px] leading-snug text-ink">{s.examples}</p>
+            <p className="mt-1 text-[18px] leading-snug text-ink">{s.examples}</p>
           </div>
           <div className="rounded-lg bg-card p-3 ring-1 ring-line">
             <Kicker>Methods that suit it</Kicker>
-            <p className="mt-1 text-[14px] leading-snug text-ink">{s.methods}</p>
+            <p className="mt-1 text-[18px] leading-snug text-ink">{s.methods}</p>
           </div>
           <div className={`rounded-lg p-3 ring-1 ring-oxy/30 ${accentSoft.oxy}`}>
             <Kicker>
               <span className="inline-flex items-center gap-1.5"><AlertTriangle className="size-3.5 text-oxy" /> The failure mode it brings</span>
             </Kicker>
-            <p className="mt-1 text-[14px] leading-snug text-oxy">{s.trap}</p>
+            <p className="mt-1 text-[18px] leading-snug text-oxy">{s.trap}</p>
           </div>
           <div className="rounded-lg bg-card p-3 ring-1 ring-line">
             <Kicker>
               <span className="inline-flex items-center gap-1.5"><Sparkles className="size-3.5 text-inksoft" /> Why it matters</span>
             </Kicker>
-            <p className="mt-1 text-[14px] leading-snug text-inksoft">{s.note}</p>
+            <p className="mt-1 text-[18px] leading-snug text-inksoft">{s.note}</p>
           </div>
         </div>
       </Panel>

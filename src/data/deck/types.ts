@@ -31,7 +31,7 @@ export type Pin = {
 };
 
 export type Figure = {
-  image: "prospectivity" | "core" | "alteration" | "magnetics";
+  image: "prospectivity" | "core" | "alteration" | "magnetics" | "machine-learning-techniques";
   caption: string;
   scale?: string;
   pins?: Pin[];

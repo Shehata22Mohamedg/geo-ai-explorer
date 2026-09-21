@@ -3,20 +3,32 @@ import { X } from "lucide-react";
 import alteration from "@/assets/alteration-remote-sensing.jpg";
 import core from "@/assets/core-trays.jpg";
 import magnetics from "@/assets/magnetics-map.jpg";
+import machineLearningTechniques from "@/assets/Machine-Learning-Techniques.webp";
 import prospectivity from "@/assets/prospectivity-map.jpg";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import type { Figure as FigureData } from "@/data/deck/types";
 import { accentBg } from "./ui";
 
-const images = { alteration, core, magnetics, prospectivity };
+const images = { alteration, core, magnetics, prospectivity, "machine-learning-techniques": machineLearningTechniques };
 
 export function GeologicalFigure({ figure }: { figure: FigureData }) {
   const [active, setActive] = useState<number | null>(null);
   const pin = active === null ? undefined : figure.pins?.[active];
   return (
     <figure className="relative overflow-hidden rounded-lg bg-ink">
-      <img src={images[figure.image]} alt={figure.caption} className="h-[490px] w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+      <Dialog>
+        <DialogTrigger asChild>
+          <button type="button" className="block w-full cursor-zoom-in text-left" aria-label={`Open full-screen image: ${figure.caption}`}>
+            <img src={images[figure.image]} alt={figure.caption} className="h-[490px] w-full object-cover" />
+          </button>
+        </DialogTrigger>
+        <DialogContent className="h-[96vh] w-[96vw] max-w-none border-0 bg-ink/95 p-5 sm:rounded-lg">
+          <DialogTitle className="sr-only">Full-screen image: {figure.caption}</DialogTitle>
+          <img src={images[figure.image]} alt={figure.caption} className="h-full w-full object-contain" />
+        </DialogContent>
+      </Dialog>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
       {figure.pins?.map((item, index) => (
         <Button key={`${item.label}-${index}`} size="icon" aria-label={`Open annotation ${item.label}`} onClick={() => setActive(index)} className={`pin-pulse absolute size-12 rounded-full border-4 border-card font-mono text-lg ${accentBg[item.accent]}`} style={{ left: `${item.x}%`, top: `${item.y}%` }}>{item.label}</Button>
       ))}

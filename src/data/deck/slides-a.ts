@@ -236,36 +236,36 @@ export const slidesA: Slide[] = [
   {
     id: "m1-flavours",
     module: 1,
-    layout: "cards",
+    layout: "split",
     kicker: "01 · The four learning styles",
     title: "The only taxonomy you must remember",
     lead: "Every application you will see today is one of these four. If you can place a claim into the right box, you can immediately ask the right sceptical question.",
-    cards: [
+    bullets: [
       {
-        tag: "Supervised",
+        label: "Supervised",
         title: "Learn from labelled examples",
         text: "Inputs + known answers. Lithology from geochemistry, grade from geophysics, ore/waste from logged core. Ask: who made the labels, and are they right?",
-        accent: "oxy",
       },
       {
-        tag: "Unsupervised",
+        label: "Unsupervised",
         title: "Find structure with no answer key",
         text: "Clustering multi-element geochemistry into populations; self-organising maps on geophysical layers. Ask: are these clusters geological or just numerical?",
-        accent: "moss",
       },
       {
-        tag: "Semi-supervised",
+        label: "Semi-supervised",
         title: "A few labels, a lot of unlabelled ground",
         text: "The realistic exploration case: 12 assayed holes, 40,000 unassayed grid cells. Positive-unlabelled learning lives here.",
-        accent: "ochre",
       },
       {
-        tag: "Reinforcement",
+        label: "Reinforcement",
         title: "Learn by trying and being scored",
         text: "Sequential decision-making — drill-hole placement, rig scheduling, autonomous rigs. Emerging in mining, rare in exploration targeting today.",
-        accent: "slate",
       },
     ],
+    figure: {
+      image: "machine-learning-techniques",
+      caption: "The four learning families: choose the learning setup before choosing the algorithm.",
+    },
   },
   {
     id: "m1-llm-types",
