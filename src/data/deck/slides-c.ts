@@ -187,8 +187,7 @@ export const slidesC: Slide[] = [
         ["Core and hyperspectral logging", "Corescan, HyLogger, Minalyze, Datarock", "Turn images and spectra into intervals, then validate automated lithology and alteration labels"],
         ["Exploration data management", "Database SQL, acQuire GIM Suite, MX Deposit, Geobank", "Capture collars, surveys, assays and logs with controlled vocabularies and an audit trail"],
         ["Prospectivity and targeting", "ArcSDM, WofE toolkits, scikit-learn, in-house stacks", "Combine evidence without confusing a high score with a discovery"],
-        ["Automation and analysis", "Python, pandas, scikit-learn, etc.", "Read a notebook, inspect the inputs and rerun the workflow instead of trusting a screenshot"],
-        ["Reproducible delivery", "Git, GitHub/GitLab, DVC, MLflow", "Track data, code, parameters and model versions so the map can be explained and repeated"],
+        ["Automation and analysis", "Python, pandas, scikit-learn, etc.", "Read a notebook, inspect the inputs and rerun the workflow instead of trusting a screenshot"]
       ],
     },
     note: "Databases matter more than algorithms in practice. A project with a clean, documented, version-controlled database is already ahead of most of the industry.",
